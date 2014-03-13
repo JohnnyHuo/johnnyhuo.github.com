@@ -7,13 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
 <meta name="og:title" content="@Value,Spring,static-argument">
-<meta name="og:url" content="http://yoursite.com/2014/03/13/@value,spring,static-argument/">
+<meta name="og:url" content="http://yoursite.com/2014/03/13/@Value,spring,static-argument/">
 <meta name="og:image">
 <meta name="og:site_name" content="My Realm">
-<meta name="og:description" content="@Value，Spring， static variable
-
-遇到的问题：
-&emsp;&emsp;&emsp;&emsp;工作中遇到的情况，这次是要在billing-matrix包中的monitor加一个scheduler的feature，这个包也是采用MVC框架，mirror server上跑着这个程序， 访问http://54.203.255.103:8080/monitor/show.d">
+<meta name="og:description" content="遇到的问题：
+&emsp;&emsp;&emsp;&emsp;工作中遇到的情况，这次是要在billing-matrix包中的monitor加一个scheduler的feature，这个包也是采用MVC框架，mirror server上跑着这个程序， 访问http://54.203.255.103:8080/monitor/show.do便可检查Production Server的响应速度。而我要">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="My Realm" type="application/atom+xml">
@@ -60,9 +58,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-@value,spring,static-argument" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-@Value,spring,static-argument" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/13/@value,spring,static-argument/" class="article-date">
+    <a href="/2014/03/13/@Value,spring,static-argument/" class="article-date">
   <time datetime="2014-03-13T07:29:49.000Z" itemprop="datePublished">Mar 13 2014</time>
 </a>
     
@@ -82,8 +80,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="-value-spring-static-variable">@Value，Spring， static variable</h1>
-<hr>
+        <hr>
 <h2 id="-">遇到的问题：</h2>
 <p>&emsp;&emsp;&emsp;&emsp;工作中遇到的情况，这次是要在billing-matrix包中的monitor加一个scheduler的feature，这个包也是采用MVC框架，mirror server上跑着这个程序， 访问<a href="http://54.203.255.103:8080/monitor/show.do便可检查Production" target="_blank">http://54.203.255.103:8080/monitor/show.do便可检查Production</a> Server的响应速度。而我要做的是统计一下这几项值的大致范围，选择出一个临界点，超过临界点就发邮件通知。原系统中已经有一个scheduler的程序，会周期性的把<code>monitorResult.toString( )</code> track到log中。而这个<code>monitorResult</code>又含有我需要监测的那些<code>field</code>，所以我要做的事情就比较简单了： </p>
 <ul>
@@ -467,9 +464,11 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/13/@value,spring,static-argument/" data-id="c1wxruql20an6px7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/13/@Value,spring,static-argument/" data-id="s2ir7k5xhyom2et8" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/work/">work</a></li></ul>
+
     </footer>
   </div>
   
@@ -494,8 +493,22 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/work/">work</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/work/" style="font-size: NaNpx;">work</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -513,7 +526,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       <ul>
         
           <li>
-            <a href="/2014/03/13/@value,spring,static-argument/">@Value,Spring,static-argument</a>
+            <a href="/2014/03/13/@Value,spring,static-argument/">@Value,Spring,static-argument</a>
           </li>
         
           <li>
