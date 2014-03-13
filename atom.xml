@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-13T08:18:00.889Z</updated>
+  <updated>2014-03-13T08:19:04.147Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -413,7 +413,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <link href="http://yoursite.com/2014/03/13/test/"/>
     <id>http://yoursite.com/2014/03/13/test/</id>
     <published>2014-03-13T07:21:11.000Z</published>
-    <updated>2014-03-13T08:17:41.000Z</updated>
+    <updated>2014-03-13T08:18:59.000Z</updated>
     <content type="html"><![CDATA[<h1 id="hello-world-">Hello World...</h1>
 <p>搞定博客！OH Yeah！</p>
 <p>前前后后搞了好几天，终于算是告一段落了，从最开始的<code>Jekyll</code>到<code>octopress</code>，最后到<code>Hexo</code>，看了很多教程，期间学习了<code>git</code>和<code>Markdown</code>，总是有收获的嘛！</p>
@@ -427,13 +427,14 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
 </li>
 </ul>
 <p>还有一些有待完善的地方，比如一些可以留言或者订阅的plugin啊，另外还有一个小tip，就是md文件标记多个tag的时候使用<a href="https://zh.wikipedia.org/wiki/YAML" target="_blank">YAML</a>格式:</p>
-<blockquote>
-<p>tags:</p>
-<ul>
-<li>123</li>
-<li>456</li>
-</ul>
-</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>tags:
+ -<span class="ruby"> <span class="number">123</span>
+</span> -<span class="ruby"> <span class="number">456</span></span>
+</pre></td></tr></table></figure>
+
 ]]></content>
     
     
