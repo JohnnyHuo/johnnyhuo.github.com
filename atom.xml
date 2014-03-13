@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-13T07:54:06.216Z</updated>
+  <updated>2014-03-13T07:55:12.776Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,9 +19,8 @@
     <link href="http://yoursite.com/2014/03/13/@Value,spring,static-argument/"/>
     <id>http://yoursite.com/2014/03/13/@Value,spring,static-argument/</id>
     <published>2014-03-13T07:29:49.000Z</published>
-    <updated>2014-03-13T07:53:42.000Z</updated>
-    <content type="html"><![CDATA[<hr>
-<h2 id="-">遇到的问题：</h2>
+    <updated>2014-03-13T07:55:01.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="-">遇到的问题：</h2>
 <p>&emsp;&emsp;&emsp;&emsp;工作中遇到的情况，这次是要在billing-matrix包中的monitor加一个scheduler的feature，这个包也是采用MVC框架，mirror server上跑着这个程序， 访问<a href="http://54.203.255.103:8080/monitor/show.do便可检查Production" target="_blank">http://54.203.255.103:8080/monitor/show.do便可检查Production</a> Server的响应速度。而我要做的是统计一下这几项值的大致范围，选择出一个临界点，超过临界点就发邮件通知。原系统中已经有一个scheduler的程序，会周期性的把<code>monitorResult.toString( )</code> track到log中。而这个<code>monitorResult</code>又含有我需要监测的那些<code>field</code>，所以我要做的事情就比较简单了： </p>
 <ul>
 <li>确定各个<code>field</code>的临界值</li>
