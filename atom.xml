@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-13T07:25:17.263Z</updated>
+  <updated>2014-03-13T07:52:04.929Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,398 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[@Value,Spring,static-argument]]></title>
+    <link href="http://yoursite.com/2014/03/13/@value,spring,static-argument/"/>
+    <id>http://yoursite.com/2014/03/13/@value,spring,static-argument/</id>
+    <published>2014-03-13T07:29:49.000Z</published>
+    <updated>2014-03-13T07:41:33.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="-value-spring-static-variable">@Value，Spring， static variable</h1>
+<hr>
+<h2 id="-">遇到的问题：</h2>
+<p>&emsp;&emsp;&emsp;&emsp;工作中遇到的情况，这次是要在billing-matrix包中的monitor加一个scheduler的feature，这个包也是采用MVC框架，mirror server上跑着这个程序， 访问<a href="http://54.203.255.103:8080/monitor/show.do便可检查Production" target="_blank">http://54.203.255.103:8080/monitor/show.do便可检查Production</a> Server的响应速度。而我要做的是统计一下这几项值的大致范围，选择出一个临界点，超过临界点就发邮件通知。原系统中已经有一个scheduler的程序，会周期性的把<code>monitorResult.toString( )</code> track到log中。而这个<code>monitorResult</code>又含有我需要监测的那些<code>field</code>，所以我要做的事情就比较简单了： </p>
+<ul>
+<li>确定各个<code>field</code>的临界值</li>
+<li>写好发送<code>email</code>的<code>method</code></li>
+</ul>
+<h3 id="-values-annotation-"><code>@Values</code> annotation 赋值</h3>
+<p>对于各个参数的赋值按说是没有难度的，但是我这次不想<code>hardcode</code>这些参数，而是用<code>properties</code>文件以及<code>@Values annotation</code>来赋值，这样程序会更加灵活。</p>
+<p>关于如何使用<code>@Values</code>以及Spring来把properties中的value注入到Bean中，详见<a href="http://www.baeldung.com/2012/02/06/properties-with-spring/" target="_blank">这篇文章</a>。</p>
+<p>按说跟着步骤来没什么难度，但实际实施起来还是出现了两个问题：</p>
+<ul>
+<li>自己不是太清楚classpath到底是指什么，<code>classpath</code>与<code>classpath*</code>有什么区别;</li>
+<li>@Values总是注入不近来，导致NullPointerException.</li>
+</ul>
+<p>关于第一个问题，我引用[这里]（<a href="http://hi.baidu.com/huahua035/item/ac8a27a994b55bad29ce9d39）的解释：" target="_blank">http://hi.baidu.com/huahua035/item/ac8a27a994b55bad29ce9d39）的解释：</a></p>
+<blockquote>
+<p>web.xml中classpath是什么含义
+简单理解，classpath就是代表  /WEB-INF /classes/  这个路径（如果不理解该路径，就把一个web工程发布为war包，然后用winrar查看其包内路径就理解啦）</p>
+<p>常用的场景：
+在SSH架构中，配置Spring的上下文环境：
+<!-- Spring Configures -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:applicationContext.xml
+        </param-value>
+    </context-param></p>
+<p>里面的
+classpath:applicationContext.xml<br>也可以使用  /WEB-INF /classes/ applicationContext.xml  代替</p>
+<p>注意：
+classpath 和 classpath<em> <strong>区别</strong>：
+classpath：只会到你的class路径中查找找文件;
+classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进行查找</p>
+</blockquote>
+<p>关于第二个问题： 我最初的想法是想把username等field声明为static的，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre>    <span class="annotation">@Value</span>(<span class="string">"${monitor.email.username:#{null}}"</span>)
+	<span class="keyword">static</span> <span class="keyword">private</span> String username;
+	
+	<span class="annotation">@Value</span>(<span class="string">"${monitor.email.password:#{null}}"</span>)
+	<span class="keyword">static</span> <span class="keyword">private</span> String password;
+	
+	<span class="annotation">@Value</span>(<span class="string">"${monitor.email.fromemail:#{null}}"</span>)
+	<span class="keyword">static</span> <span class="keyword">private</span> String fromEmail;
+	
+	<span class="annotation">@Value</span>(<span class="string">"${monitor.email.toemail.notserious:#{null}}"</span>)
+	<span class="keyword">private</span> String toEmailNotSerious;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitor.email.toemail.serious:#{null}}"</span>)
+	<span class="keyword">private</span> String toEmailSerious;
+</pre></td></tr></table></figure>
+
+<p>但是事实证明value注入不进来的原因就是<strong>static</strong>， 发现自己对于static的认识还是不够，下面引用<a href="http://stackoverflow.com/a/413904/2345313" target="_blank">stack overflow</a>上别人的解答</p>
+<blockquote>
+<p>static members belong to the class instead of a specific instance.</p>
+<p>It means that only one instance of a static field exists even if you create a million instances of the class or you don&#39;t create any. It will be shared by all instances.</p>
+<p>Since static methods also do not belong to a specific instance, they can&#39;t refer to instance members (how would you know which instance Hello class you want to refer to?). static members can only refer to static members. Instance members can, of course access static members.</p>
+<p>Side note: Of course, static members can access instance members through an object reference.</p>
+</blockquote>
+<p>但是没有找到非常适合这个case的解释，我觉得可能Spring在把这个value注入到Bean中时是属于instance范畴的，而不是calss，因为Bean是一个Object，臆测。。总之删掉static就可正常赋值</p>
+<h3 id="-email-"><strong>发送email</strong></h3>
+<p>我的代码是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+</pre></td><td class="code"><pre><span class="keyword">package</span> com.fuhu.osg.billing.matrix.scheduler;
+
+<span class="keyword">import</span> java.util.ArrayList;
+<span class="keyword">import</span> java.util.HashMap;
+<span class="keyword">import</span> java.util.Iterator;
+<span class="keyword">import</span> java.util.List;
+<span class="keyword">import</span> java.util.Map;
+<span class="keyword">import</span> java.util.Properties;
+<span class="keyword">import</span> java.util.Queue;
+<span class="keyword">import</span> java.util.concurrent.ArrayBlockingQueue;
+
+<span class="keyword">import</span> org.apache.log4j.Logger;
+<span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;
+<span class="keyword">import</span> org.springframework.scheduling.annotation.Scheduled;
+<span class="keyword">import</span> org.springframework.stereotype.Component;
+
+<span class="keyword">import</span> com.fuhu.osg.billing.matrix.data.json.MonitorObject;
+<span class="keyword">import</span> com.fuhu.osg.billing.matrix.factory.AnalyzeFactory;
+<span class="keyword">import</span> com.fuhu.osg.billing.matrix.util.DataUtil;
+<span class="keyword">import</span> com.fuhu.osg.billing.matrix.util.FileUtil;
+<span class="keyword">import</span> com.fuhu.osg.billing.restclient.MonitorRESTClient;
+<span class="keyword">import</span> com.fuhu.osg.billing.result.MonitorResult;
+<span class="keyword">import</span> com.fuhu.osg.util.Constants;
+<span class="keyword">import</span> java.util.Properties;
+<span class="keyword">import</span> javax.mail.Message;
+<span class="keyword">import</span> javax.mail.MessagingException;
+<span class="keyword">import</span> javax.mail.PasswordAuthentication;
+<span class="keyword">import</span> javax.mail.Session;
+<span class="keyword">import</span> javax.mail.Transport;
+<span class="keyword">import</span> javax.mail.internet.InternetAddress;
+<span class="keyword">import</span> javax.mail.internet.MimeMessage;
+
+<span class="annotation">@Component</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MatrixScheduler</span> {</span>
+
+	<span class="keyword">private</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(MatrixScheduler.class);
+
+	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Map&lt;String, Queue&lt;MonitorResult&gt;&gt; serverMap = <span class="keyword">new</span> HashMap&lt;String, Queue&lt;MonitorResult&gt;&gt;();
+
+	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> List&lt;String&gt; serverList = <span class="keyword">new</span> ArrayList&lt;String&gt;();
+	<span class="annotation">@Autowired</span>
+	<span class="keyword">private</span> MonitorRESTClient client;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitorEmailUsername}#{null}"</span>)
+	<span class="keyword">private</span> String username;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitorEmailPassword}"</span>)
+	<span class="keyword">private</span> String password;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitorFromEmail}"</span>)
+	<span class="keyword">private</span> String fromEmail;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitorToEmailNotSerious}"</span>)
+	<span class="keyword">private</span> String toEmailNotSerious;
+
+	<span class="annotation">@Value</span>(<span class="string">"${monitorToEmailSerious}"</span>)
+	<span class="keyword">private</span> String toEmailSerious;
+
+	<span class="keyword">boolean</span> serious;
+
+	<span class="annotation">@Scheduled</span>(cron = <span class="string">"${monitor.scheduler}"</span>)
+	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">monitorActivated</span>() {
+		MonitorResult result = client.monitorStatus();
+
+		Queue&lt;MonitorResult&gt; queue = <span class="keyword">null</span>;
+		<span class="keyword">if</span> (serverMap.get(result.getServerId()) == <span class="keyword">null</span>) {
+			queue = <span class="keyword">new</span> ArrayBlockingQueue&lt;MonitorResult&gt;(<span class="number">48</span>);
+			serverMap.put(result.getServerId(), queue);
+			serverList.add(result.getServerId());
+		} <span class="keyword">else</span> {
+			queue = serverMap.get(result.getServerId());
+		}
+
+		<span class="keyword">if</span> (queue.size() == <span class="number">48</span>) {
+			queue.poll();
+		}
+		<span class="keyword">if</span> (result.getStatus().equals(Constants.SUCCESS)) {
+			queue.add(result);
+		} <span class="keyword">else</span> {
+			queue.add(<span class="keyword">new</span> MonitorResult());
+		}
+		logger.trace(result.toString());
+		<span class="comment">// for data analysis</span>
+		<span class="keyword">if</span> (result.getTotalRTT() != <span class="number">0.0</span>) {
+			System.out.println(<span class="string">"Result is --&gt; "</span> + result.toString());
+		}
+		StringBuilder sBuilder = <span class="keyword">new</span> StringBuilder();
+		<span class="keyword">if</span> (result.getCoppaRTT() &gt; <span class="number">500</span>) {
+			<span class="comment">// send email</span>
+			String content = <span class="string">"CoppaRTT is above 500"</span>;
+			serious = <span class="keyword">false</span>;
+
+			sendEmail(content, username, password, fromEmail, toEmailNotSerious, toEmailSerious);
+		}
+
+	}
+
+	<span class="keyword">public</span> <span class="keyword">static</span> Queue&lt;MonitorResult&gt; <span class="title">getDataQueue</span>(String serverId) {
+		<span class="keyword">return</span> serverMap.get(serverId);
+	}
+
+	<span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getServerList</span>() {
+		<span class="keyword">return</span> serverList;
+	}
+
+<span class="comment">//	inner class uses username & password, so use final parameter.</span>
+	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendEmail</span>(String content, <span class="keyword">final</span> String username, <span class="keyword">final</span> String password, String fromEmail, String toEmailNotSerious , String toEmailSerious) {
+		Properties props = <span class="keyword">new</span> Properties();
+		props.put(<span class="string">"mail.smtp.host"</span>, <span class="string">"smtp.gmail.com"</span>);
+		props.put(<span class="string">"mail.smtp.socketFactory.port"</span>, <span class="string">"465"</span>);
+		props.put(<span class="string">"mail.smtp.socketFactory.class"</span>,
+				<span class="string">"javax.net.ssl.SSLSocketFactory"</span>);
+		props.put(<span class="string">"mail.smtp.auth"</span>, <span class="string">"true"</span>);
+		props.put(<span class="string">"mail.smtp.port"</span>, <span class="string">"465"</span>);
+
+		Session session = Session.getDefaultInstance(props,
+				<span class="keyword">new</span> javax.mail.Authenticator() {
+					<span class="keyword">protected</span> PasswordAuthentication <span class="title">getPasswordAuthentication</span>() {
+						<span class="keyword">return</span> <span class="keyword">new</span> PasswordAuthentication(username, password);
+					}
+				});
+
+		<span class="keyword">try</span> {
+
+			Message message = <span class="keyword">new</span> MimeMessage(session);
+			message.setFrom(<span class="keyword">new</span> InternetAddress(fromEmail));
+			<span class="keyword">if</span> (serious) {
+				message.setRecipients(Message.RecipientType.TO,
+						InternetAddress.parse(toEmailSerious));
+			} <span class="keyword">else</span> {
+				message.setRecipients(Message.RecipientType.TO,
+						InternetAddress.parse(toEmailNotSerious));
+			}
+			message.setSubject(<span class="string">"Server Monitor Warning"</span>);
+			message.setText(<span class="string">"Attention, server in danger "</span> + content);
+			Transport.send(message);
+		} <span class="keyword">catch</span> (MessagingException e) {
+			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);
+		}
+	}
+
+}
+</pre></td></tr></table></figure>
+
+<p>这里sendEmail（）有一点tricky的地方，就是用了<code>final variable</code>, <code>final String username</code> &amp; <code>final String password</code>, 这是因为sendEmail（）method中的<code>inner class</code>使用了这两个<code>argument</code>. 原因：</p>
+<blockquote>
+<p>There are two main reasons you might want to mark an argument final. First, if you&#39;re planning on using the argument in an anonymous inner class, then you must mark it final so that it can be referenced in that class. This is actually a pretty common use case for marking arguments final.</p>
+<p>The other common reason to mark arguments final is to prevent yourself from accidentally overwriting them. If you really don&#39;t want to change the arguments, then perhaps you should mark them final so that if you actually do, you&#39;ll get the error at compile-time rather than finding out at runtime that your code has a bug.</p>
+</blockquote>
+<p>详见<a href="http://stackoverflow.com/a/4930124/2345313" target="_blank">stack overflow</a>的解释。</p>
+<h6 id="markdown-">Markdown首行缩进：</h6>
+<p><code>&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;这是段落1
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;这是段落2
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这是段落3
+无段落</code></p>
+<h6 id="-">效果如下：</h6>
+<p>&ensp;&ensp;&ensp;&ensp;这是段落1
+&emsp;&emsp;&emsp;&emsp;这是段落2
+&nbsp;&nbsp;&nbsp;&nbsp;这是段落3
+无段落</p>
+]]></content>
+    
+    
+  </entry>
   
   <entry>
     <title><![CDATA[test]]></title>
