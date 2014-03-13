@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-13T08:23:27.888Z</updated>
+  <updated>2014-03-13T08:24:36.495Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -413,7 +413,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <link href="http://yoursite.com/2014/03/13/test/"/>
     <id>http://yoursite.com/2014/03/13/test/</id>
     <published>2014-03-13T07:21:11.000Z</published>
-    <updated>2014-03-13T08:23:24.000Z</updated>
+    <updated>2014-03-13T08:24:31.000Z</updated>
     <content type="html"><![CDATA[<h1 id="hello-world-">Hello World...</h1>
 <p>搞定博客！OH Yeah！</p>
 <p>前前后后搞了好几天，终于算是告一段落了，从最开始的<code>Jekyll</code>到<code>octopress</code>，最后到<code>Hexo</code>，看了很多教程，期间学习了<code>git</code>和<code>Markdown</code>，总是有收获的嘛！</p>
@@ -427,10 +427,9 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
 </li>
 </ul>
 <p>还有一些有待完善的地方，比如一些可以留言或者订阅的plugin啊，另外还有一个小tip，就是md文件标记多个tag的时候使用<a href="https://zh.wikipedia.org/wiki/YAML" target="_blank">YAML</a>格式:</p>
-<p><code>tags:</code>
- <code>-123</code>
- <code>-456</code>
-`</p>
+<p><code>tags:
+ 换行-123
+ 换行-456</code></p>
 ]]></content>
     
     
