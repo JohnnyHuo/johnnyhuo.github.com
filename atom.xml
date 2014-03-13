@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-13T08:15:06.835Z</updated>
+  <updated>2014-03-13T08:18:00.889Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -413,7 +413,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <link href="http://yoursite.com/2014/03/13/test/"/>
     <id>http://yoursite.com/2014/03/13/test/</id>
     <published>2014-03-13T07:21:11.000Z</published>
-    <updated>2014-03-13T08:14:54.000Z</updated>
+    <updated>2014-03-13T08:17:41.000Z</updated>
     <content type="html"><![CDATA[<h1 id="hello-world-">Hello World...</h1>
 <p>搞定博客！OH Yeah！</p>
 <p>前前后后搞了好几天，终于算是告一段落了，从最开始的<code>Jekyll</code>到<code>octopress</code>，最后到<code>Hexo</code>，看了很多教程，期间学习了<code>git</code>和<code>Markdown</code>，总是有收获的嘛！</p>
