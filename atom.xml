@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-16T05:07:04.497Z</updated>
+  <updated>2014-03-16T05:07:45.671Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2014/03/15/%E6%8E%A5%E4%B8%8A%EF%BC%9A%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89/"/>
     <id>http://yoursite.com/2014/03/15/接上：拖拖拉拉/</id>
     <published>2014-03-16T00:09:08.000Z</published>
-    <updated>2014-03-16T05:05:50.000Z</updated>
+    <updated>2014-03-16T05:07:41.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">题外话：</h2>
 <p>本来预定下周一到的耳机今天（周六）中午就到了，听了一下感觉音效不错，但是也就那么回事，而且卡耳朵卡得有点紧，心想要不要退掉或者卖掉，点回去Amazon一看，已经是正常价140刀了，还是捡了个大便宜呀，可惜用老婆的号买第二个被Amazon cancel了，原因应该是两个账号用的信用卡卡号是一样的...这样理想计划买二卖一泡汤了...不要太贪心嘛 </p>
 <p>昨晚Larry请我去看电影，极品飞车，3D效果很爽，周五中午公司有披萨，结果一天没出办公室，屁股受不了，晚上本想回家的，下班太累，于是就给自己个借口去放松一下，结果错过老爸发来的Facetime，晚上11点半到家，打回去老爸问我干嘛去了，不想对老爸撒谎，如实说同事请看电影了，“咦也，你看人家”...羞愧难当</p>
@@ -34,6 +34,7 @@ Multithreaded programs must be carefully programmed to prevent those bad things 
 Also, context switching between threads is generally less expensive than in processes. And finally, the overhead (the cost of communication) between threads is very low relative to processes.</p>
 </blockquote>
 <p><strong>SUMMARY</strong></p>
+<blockquote>
 <ol>
 <li><p>Threads are easier to create than processes since they 
 don&#39;t require a separate address space.</p>
@@ -53,6 +54,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
 <li><p>A process can consist of multiple threads.</p>
 </li>
 </ol>
+</blockquote>
 ]]></content>
     
     
