@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2014-03-16T05:07:45.671Z</updated>
+  <updated>2014-03-16T05:19:28.182Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2014/03/15/%E6%8E%A5%E4%B8%8A%EF%BC%9A%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89/"/>
     <id>http://yoursite.com/2014/03/15/接上：拖拖拉拉/</id>
     <published>2014-03-16T00:09:08.000Z</published>
-    <updated>2014-03-16T05:07:41.000Z</updated>
+    <updated>2014-03-16T05:18:44.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">题外话：</h2>
 <p>本来预定下周一到的耳机今天（周六）中午就到了，听了一下感觉音效不错，但是也就那么回事，而且卡耳朵卡得有点紧，心想要不要退掉或者卖掉，点回去Amazon一看，已经是正常价140刀了，还是捡了个大便宜呀，可惜用老婆的号买第二个被Amazon cancel了，原因应该是两个账号用的信用卡卡号是一样的...这样理想计划买二卖一泡汤了...不要太贪心嘛 </p>
 <p>昨晚Larry请我去看电影，极品飞车，3D效果很爽，周五中午公司有披萨，结果一天没出办公室，屁股受不了，晚上本想回家的，下班太累，于是就给自己个借口去放松一下，结果错过老爸发来的Facetime，晚上11点半到家，打回去老爸问我干嘛去了，不想对老爸撒谎，如实说同事请看电影了，“咦也，你看人家”...羞愧难当</p>
@@ -50,13 +50,22 @@ less resources than processes.</p>
 <li><p>Processes are independent of each other.  Threads, since they 
 share the same address space are interdependent, so caution 
 must be taken so that different threads don&#39;t step on each other.<br>This is really another way of stating #2 above.</p>
-</li>
-<li><p>A process can consist of multiple threads.</p>
+<ol>
+<li>A process can consist of multiple threads.</li>
+</ol>
 </li>
 </ol>
 </blockquote>
 ]]></content>
     
+    
+      <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
+    
+      <category term="job hunting" scheme="http://yoursite.com/tags/job%20hunting/"/>
+    
+      <category term="thread" scheme="http://yoursite.com/tags/thread/"/>
+    
+      <category term="diary" scheme="http://yoursite.com/tags/diary/"/>
     
   </entry>
   
@@ -65,7 +74,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
     <link href="http://yoursite.com/2014/03/13/%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89%E8%BF%98%E6%98%AF%E5%BC%80%E5%A7%8B%E5%B9%B2%E6%AD%A3%E4%BA%8B%E5%90%A7/"/>
     <id>http://yoursite.com/2014/03/13/拖拖拉拉还是开始干正事吧/</id>
     <published>2014-03-14T06:48:00.000Z</published>
-    <updated>2014-03-14T09:08:40.000Z</updated>
+    <updated>2014-03-16T05:19:14.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">时间流水账：</h2>
 <p>7点半下班，7点45到家，没有做饭，随便吃吃蝴蝶酥+牛奶，到现在11点50，有4个小时的时间...看大酒神视频一个多小时，研究对比amazon上面thunderbolt转接线又不知过了多久，期间做了一点点正事就是把老婆要求的在职证明又重新扫描了一遍。
 这种时间效率做什么都绝无成功之可能啊！</p>
@@ -180,6 +189,10 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
     
       <category term="job hunting" scheme="http://yoursite.com/tags/job%20hunting/"/>
+    
+      <category term="diary" scheme="http://yoursite.com/tags/diary/"/>
+    
+      <category term="thread &amp; process" scheme="http://yoursite.com/tags/thread%20&%20process/"/>
     
   </entry>
   

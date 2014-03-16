@@ -3,26 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>终于搞定博客了 | My Realm</title>
+  <title>Tag: thread | My Realm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="终于搞定博客了">
-<meta name="og:url" content="http://yoursite.com/2014/03/13/test/">
+<meta name="og:title">
+<meta name="og:url" content="http://yoursite.com/tags/thread/">
 <meta name="og:image">
 <meta name="og:site_name" content="My Realm">
-<meta name="og:description" content="Hello World...
-搞定博客！OH Yeah！
-前前后后搞了好几天，终于算是告一段落了，从最开始的Jekyll到octopress，最后到Hexo，看了很多教程，期间学习了git和Markdown，总是有收获的嘛！
-从最终结果来看，主要参考下面几篇文章就可以搭建出来自己的Hexo Blog了
-
-使用hexo搭建静态博客
-
-Markdown 语法说明
-
-git - 简明指南
-
-
-还有一些有">
+<meta name="og:description">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="My Realm" type="application/atom+xml">
@@ -69,10 +57,12 @@ git - 简明指南
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-接上：拖拖拉拉" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/03/13/test/" class="article-date">
-  <time datetime="2014-03-13T07:21:11.000Z" itemprop="datePublished">Mar 13 2014</time>
+    <a href="/2014/03/15/接上：拖拖拉拉/" class="article-date">
+  <time datetime="2014-03-16T00:09:08.000Z" itemprop="datePublished">Mar 15 2014</time>
 </a>
     
   </div>
@@ -82,8 +72,8 @@ git - 简明指南
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      终于搞定博客了
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/15/接上：拖拖拉拉/">接上：拖拖拉拉</a>
     </h1>
   
 
@@ -91,55 +81,59 @@ git - 简明指南
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="hello-world-">Hello World...</h1>
-<p>搞定博客！OH Yeah！</p>
-<p>前前后后搞了好几天，终于算是告一段落了，从最开始的<code>Jekyll</code>到<code>octopress</code>，最后到<code>Hexo</code>，看了很多教程，期间学习了<code>git</code>和<code>Markdown</code>，总是有收获的嘛！</p>
-<p>从最终结果来看，主要参考下面几篇文章就可以搭建出来自己的<code>Hexo Blog</code>了</p>
-<ul>
-<li><p><a href="http://jimliu.net/2013/09/08/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" target="_blank">使用hexo搭建静态博客</a></p>
+        <h2 id="-">题外话：</h2>
+<p>本来预定下周一到的耳机今天（周六）中午就到了，听了一下感觉音效不错，但是也就那么回事，而且卡耳朵卡得有点紧，心想要不要退掉或者卖掉，点回去Amazon一看，已经是正常价140刀了，还是捡了个大便宜呀，可惜用老婆的号买第二个被Amazon cancel了，原因应该是两个账号用的信用卡卡号是一样的...这样理想计划买二卖一泡汤了...不要太贪心嘛 </p>
+<p>昨晚Larry请我去看电影，极品飞车，3D效果很爽，周五中午公司有披萨，结果一天没出办公室，屁股受不了，晚上本想回家的，下班太累，于是就给自己个借口去放松一下，结果错过老爸发来的Facetime，晚上11点半到家，打回去老爸问我干嘛去了，不想对老爸撒谎，如实说同事请看电影了，“咦也，你看人家”...羞愧难当</p>
+<p>老父亲还卧病在床，不能在身边尽孝也抓紧时间做点正事吧！</p>
+<h2 id="-">接上篇，基础问题</h2>
+<h3 id="threads-and-processes-multithreading">threads and processes -- MultiThreading</h3>
+<blockquote>
+<p>Threads, of course, allow for multi-threading. A common example of the advantage of multithreading is the fact that you can have a word processor that prints a document using a background thread, but at the same time another thread is running that accepts user input, so that you can type up a new document.
+If we were dealing with an application that uses only one thread, then the application would only be able to do one thing at a time – so printing and responding to user input at the same time would not be possible in a single threaded application.
+Each process has it’s own address space, but the threads within the same process share that address space. Threads also share any other resources within that process. This means that it’s very easy to share data amongst threads, but it’s also easy for the threads to step on each other, which can lead to bad things.
+Multithreaded programs must be carefully programmed to prevent those bad things from happening. Sections of code that modify data structures shared by multiple threads are called critical sections. When a critical section is running in one thread it’s extremely important that no other thread be allowed into that critical section. This is called synchronization, which we wont get into any further over here. But, the point is that multithreading requires careful programming.
+Also, context switching between threads is generally less expensive than in processes. And finally, the overhead (the cost of communication) between threads is very low relative to processes.</p>
+</blockquote>
+<p><strong>SUMMARY</strong></p>
+<blockquote>
+<ol>
+<li><p>Threads are easier to create than processes since they 
+don&#39;t require a separate address space.</p>
 </li>
-<li><p><a href="http://wowubuntu.com/markdown/" target="_blank">Markdown 语法说明</a></p>
+<li><p>Multithreading requires careful programming since threads 
+share data strucures that should only be modified by one thread
+at a time.  Unlike threads, processes don&#39;t share the same 
+address space.</p>
 </li>
-<li><p><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank">git - 简明指南</a></p>
+<li><p>Threads are considered lightweight because they use far 
+less resources than processes.</p>
 </li>
-</ul>
-<p>还有一些有待完善的地方，比如一些可以留言或者订阅的plugin啊，另外还有一个小tip，就是md文件标记多个tag的时候使用<a href="https://zh.wikipedia.org/wiki/YAML" target="_blank">YAML</a>格式:</p>
-<p><code>tags:</code>
-<code>换行-123</code>
-<code>换行-456</code></p>
+<li><p>Processes are independent of each other.  Threads, since they 
+share the same address space are interdependent, so caution 
+must be taken so that different threads don&#39;t step on each other.<br>This is really another way of stating #2 above.</p>
+<ol>
+<li>A process can consist of multiple threads.</li>
+</ol>
+</li>
+</ol>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/13/test/" data-id="nz3ehhuqz4y1p5y7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/15/接上：拖拖拉拉/" data-id="qazgqacuu10b8n06" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
+
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2014/03/13/@Value,spring,static-argument/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          @Value,Spring,static-argument
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/03/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+  
 </section>
         
           <aside id="sidebar">

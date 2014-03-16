@@ -59,6 +59,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-接上：拖拖拉拉" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/15/接上：拖拖拉拉/" class="article-date">
+  <time datetime="2014-03-16T00:09:08.000Z" itemprop="datePublished">Mar 15 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/15/接上：拖拖拉拉/">接上：拖拖拉拉</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-">题外话：</h2>
+<p>本来预定下周一到的耳机今天（周六）中午就到了，听了一下感觉音效不错，但是也就那么回事，而且卡耳朵卡得有点紧，心想要不要退掉或者卖掉，点回去Amazon一看，已经是正常价140刀了，还是捡了个大便宜呀，可惜用老婆的号买第二个被Amazon cancel了，原因应该是两个账号用的信用卡卡号是一样的...这样理想计划买二卖一泡汤了...不要太贪心嘛 </p>
+<p>昨晚Larry请我去看电影，极品飞车，3D效果很爽，周五中午公司有披萨，结果一天没出办公室，屁股受不了，晚上本想回家的，下班太累，于是就给自己个借口去放松一下，结果错过老爸发来的Facetime，晚上11点半到家，打回去老爸问我干嘛去了，不想对老爸撒谎，如实说同事请看电影了，“咦也，你看人家”...羞愧难当</p>
+<p>老父亲还卧病在床，不能在身边尽孝也抓紧时间做点正事吧！</p>
+<h2 id="-">接上篇，基础问题</h2>
+<h3 id="threads-and-processes-multithreading">threads and processes -- MultiThreading</h3>
+<blockquote>
+<p>Threads, of course, allow for multi-threading. A common example of the advantage of multithreading is the fact that you can have a word processor that prints a document using a background thread, but at the same time another thread is running that accepts user input, so that you can type up a new document.
+If we were dealing with an application that uses only one thread, then the application would only be able to do one thing at a time – so printing and responding to user input at the same time would not be possible in a single threaded application.
+Each process has it’s own address space, but the threads within the same process share that address space. Threads also share any other resources within that process. This means that it’s very easy to share data amongst threads, but it’s also easy for the threads to step on each other, which can lead to bad things.
+Multithreaded programs must be carefully programmed to prevent those bad things from happening. Sections of code that modify data structures shared by multiple threads are called critical sections. When a critical section is running in one thread it’s extremely important that no other thread be allowed into that critical section. This is called synchronization, which we wont get into any further over here. But, the point is that multithreading requires careful programming.
+Also, context switching between threads is generally less expensive than in processes. And finally, the overhead (the cost of communication) between threads is very low relative to processes.</p>
+</blockquote>
+<p><strong>SUMMARY</strong></p>
+<blockquote>
+<ol>
+<li><p>Threads are easier to create than processes since they 
+don&#39;t require a separate address space.</p>
+</li>
+<li><p>Multithreading requires careful programming since threads 
+share data strucures that should only be modified by one thread
+at a time.  Unlike threads, processes don&#39;t share the same 
+address space.</p>
+</li>
+<li><p>Threads are considered lightweight because they use far 
+less resources than processes.</p>
+</li>
+<li><p>Processes are independent of each other.  Threads, since they 
+share the same address space are interdependent, so caution 
+must be taken so that different threads don&#39;t step on each other.<br>This is really another way of stating #2 above.</p>
+<ol>
+<li>A process can consist of multiple threads.</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/03/15/接上：拖拖拉拉/" data-id="qazgqacuu10b8n06" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread/">thread</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-拖拖拉拉还是开始干正事吧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/03/13/拖拖拉拉还是开始干正事吧/" class="article-date">
@@ -193,10 +267,10 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="grttvlld8a72e9jz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="2fia6w908i0ju30f" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
 
     </footer>
   </div>
@@ -216,7 +290,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread/">thread</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -225,7 +299,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Spring/" style="font-size: NaNpx;">Spring</a><a href="/tags/Work/" style="font-size: NaNpx;">Work</a><a href="/tags/interview/" style="font-size: NaNpx;">interview</a><a href="/tags/job hunting/" style="font-size: NaNpx;">job hunting</a>
+      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 20.00px;">diary</a><a href="/tags/interview/" style="font-size: 20.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 20.00px;">job hunting</a><a href="/tags/thread/" style="font-size: 10.00px;">thread</a><a href="/tags/thread & process/" style="font-size: 10.00px;">thread & process</a>
     </div>
   </div>
 
