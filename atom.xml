@@ -3,9 +3,9 @@
   <title><![CDATA[My Realm]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-03-16T05:19:28.182Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://johnnyhuo.github.io/"/>
+  <updated>2014-03-16T09:17:46.119Z</updated>
+  <id>http://johnnyhuo.github.io/</id>
   
   <author>
     <name><![CDATA[John Doe]]></name>
@@ -15,11 +15,147 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[tcp和udp的不同]]></title>
+    <link href="http://johnnyhuo.github.io/2014/03/15/tcp%E5%92%8Cudp%E7%9A%84%E4%B8%8D%E5%90%8C/"/>
+    <id>http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/</id>
+    <published>2014-03-16T05:40:31.000Z</published>
+    <updated>2014-03-16T09:16:43.000Z</updated>
+    <content type="html"><![CDATA[<p>There are two types of Internet Protocol (IP) traffic. They are TCP or Transmission Control Protocol and UDP or User Datagram Protocol. TCP is connection oriented = once a connection is established, data can be sent bidirectional. UDP is a simpler, connectionless Internet protocol. Multiple messages are sent as packets in chunks using UDP.</p>
+<h2 id="differences-list">Differences List</h2>
+<ul>
+<li><p>Connection:</p>
+<ul>
+<li>TCP is a connection-oriented protocol.</li>
+<li>UDP is a connectionless protocol.</li>
+</ul>
+</li>
+<li><p>Functions: </p>
+<ul>
+<li>As a message makes its way across the internet from one computer to another. This is connection based.</li>
+<li>UDP is also a protocol used in message transport or transfer. This is not connection based which means that one program can send a load of packets to another and that would be the end of the relationship.</li>
+</ul>
+</li>
+<li><p>Usage:</p>
+<ul>
+<li>TCP is suited for applications that require high reliability, and transmission time is relatively less critical. </li>
+<li>UDP is suitable for applications that need fast, efficient transmission, such as games. UDP&#39;s stateless nature is also useful for servers that answer small queries from huge numbers of clients.</li>
+</ul>
+</li>
+<li><p>Examples: </p>
+<ul>
+<li>TCP: HTTP, HTTPs, FTP, SMTP, Telnet</li>
+<li>UDP: DNS,  DHCP, TFTP, SNMP, RIP, VOIP</li>
+</ul>
+</li>
+<li><p>Ordering of data packets</p>
+<ul>
+<li>TCP rearranges data packets in the order specified. </li>
+<li>UDP has no inherent order as all packets are independent of each other. If ordering is required, it has to be managed by the application layer.</li>
+</ul>
+</li>
+<li><p>Speed of transfer</p>
+<ul>
+<li>TCP is slower that UDP</li>
+<li>UDP is faster because there is no error-checking for packets.</li>
+</ul>
+</li>
+<li><p>Reliability</p>
+<ul>
+<li>There is absolute guarantee that the data transferred remains intact and arrives in the same order in which it was sent.</li>
+<li>There is no guarantee that the messages or packets sent would reach at all.</li>
+</ul>
+</li>
+<li><p>Header Size</p>
+<ul>
+<li>TCP header size is 20 bytes.</li>
+<li>UDP Header size is 8 bytes.</li>
+</ul>
+</li>
+<li><p>Common Header Fields</p>
+<ul>
+<li>TCP: Source port, Destination port, Check Sum.</li>
+<li>UDP: Source port, Destination port, Check Sum.</li>
+</ul>
+</li>
+<li><p>Streaming of Data</p>
+<ul>
+<li>TCP: Data is read as a <em>byte stream</em>, <em>no distinguishing indications</em> are transmitted to signal message(segment) boundaries.</li>
+<li>UDP: Packets are sent <em>individually</em> and are checked for integrity <em>only if they arrive</em>. Packets have <strong>definite boundaries</strong> which are honored upon receipt, meaning a read operation at the receiver socket will yield an entire message as it was originally sent.</li>
+</ul>
+</li>
+<li><p>Weight</p>
+<ul>
+<li>TCP is <strong>heavy-weight</strong>. TCP requires three packets to set up a socket connection, before any user data can be sent. TCP handles reliability and congestion control.</li>
+<li>UDP is lightweight. There is no ordering of messages, no tracking connections, etc. It is a small transport layer designed on top of IP.</li>
+</ul>
+</li>
+<li><p>Data Flow Control</p>
+<ul>
+<li>TCP does flow control. </li>
+<li>UDP does not have an option for flow control.</li>
+</ul>
+</li>
+<li><p>Error Checking</p>
+<ul>
+<li>TCP does error checking</li>
+<li>UDP does error checking too, but no recovery options.</li>
+</ul>
+</li>
+<li><p>Fields</p>
+<ul>
+<li>TCP: 1.Sequence Number, 2.AcK number, 3.Data offset, 4.Reserved, 5.Control bit, 6,Window, 7.Urgent Pointer, 8.Options, 9.Padding, 10.Check Sum, 11.Source port, 12.Destination port</li>
+<li>UDP: 1.Length,2.Source port, 3.Destination port, 4.Check Sum.</li>
+</ul>
+</li>
+<li><p>Acknowledgement</p>
+<ul>
+<li>TCP: Acknowledgement segments</li>
+<li>UDP: No Acknowledgement</li>
+</ul>
+</li>
+<li><p>Handshake</p>
+<ul>
+<li>TCP: SYN, SYN-ACK, ACK</li>
+<li>UDP: No handshake(connectionless protocol)</li>
+</ul>
+</li>
+<li><p>Checksum</p>
+<ul>
+<li>TCP: checksum</li>
+<li>UDP: to delete errors.</li>
+</ul>
+<h2 id="differences-in-data-transfer-features">Differences in Data Transfer Features</h2>
+<p>TCP ensures a reliable and ordered delivery of a stream of bytes from user to server or vice versa. UDP is not dedicated to end to end connections and communication does not check readiness of receiver.</p>
+<h2 id="reliability">Reliability</h2>
+<p>TCP is more reliable since it manages message acknowledgment and retransmissions in case of lost parts. Thus there is absolutely no missing data. UDP does not ensure that communication has reached receiver since concepts of acknowledgment, time out and retransmission are not present.</p>
+<h2 id="ordering">Ordering</h2>
+<p>TCP transmissions are sent in a sequence and they are received in the same sequence. In the event of data segments arriving in wrong order, TCP reorders and delivers application. In the case of UDP, sent message sequence may not be maintained when it reaches receiving application. There is absolutely no way of predicting the order in which message will be received.</p>
+<h2 id="connection">Connection</h2>
+<p>TCP is a heavy weight connection requiring three packets for a socket connection and handles congestion control and reliability. UDP is a lightweight transport layer designed atop an IP. There are no tracking connections or ordering of messages.</p>
+<h2 id="method-of-transfer">Method of transfer</h2>
+<p>TCP reads data as a byte stream and message is transmitted to segment boundaries. UDP messages are packets which are sent individually and on arrival are checked for their integrity. Packets have defined boundaries while ata stream has none.</p>
+<h2 id="how-tcp-and-udp-work">How TCP and UDP work</h2>
+<p>A TCP connection is established via a <a href="http://en.wikipedia.org/w/index.php?title=Transmission_Control_Protocol&amp;oldid=342876584#Connection_establishment" target="_blank">three way handshake</a>, which is a process of initiating and acknowledging a connection. Once the connection is established data transfer can begin. After transmission, the connection is terminated by closing of all established virtual circuits.</p>
+<p>UDP uses a simple transmission model without implicit hand-shaking dialogues for guaranteeing reliability, ordering, or data integrity. Thus, UDP provides an unreliable service datagrams may arrive out of order, appear duplicated, or go missing without notice. UDP assumes that error checking and correction is either not necessary or performed in the application, avoiding the overhead of such processing at the network interface level. Unlike TCP, UDP is compatible with packet broadcasts(sending to all on local network) and multicasting(seng to all subscribers).</p>
+<h2 id="different-applications-of-tcp-and-udp">Different Applications of TCP and UDP</h2>
+<p>Web browsing, email and file transfer are common applications that make use of TCP. TCP is used to control segment size, rate of data exchange, flow control and network congestion. TCP is preferred where error correction facilities are required at network interface level. UDP is largely used by time sensitive applications as well as by servers that answer small queries from huge number of clients. UDP is compatible with packet broadcast - sending to all on a network and multicasting - sending to all subscribers. UDP is commonly used in Domain Name System, Voice over IP, Trivial File Transfer Protocol and online games.</p>
+</li>
+</ul>
+]]></content>
+    
+    
+      <category term="tcp" scheme="http://johnnyhuo.github.io/tags/tcp/"/>
+    
+      <category term="udp" scheme="http://johnnyhuo.github.io/tags/udp/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[接上：拖拖拉拉]]></title>
-    <link href="http://yoursite.com/2014/03/15/%E6%8E%A5%E4%B8%8A%EF%BC%9A%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89/"/>
-    <id>http://yoursite.com/2014/03/15/接上：拖拖拉拉/</id>
+    <link href="http://johnnyhuo.github.io/2014/03/15/%E6%8E%A5%E4%B8%8A%EF%BC%9A%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89/"/>
+    <id>http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/</id>
     <published>2014-03-16T00:09:08.000Z</published>
-    <updated>2014-03-16T05:18:44.000Z</updated>
+    <updated>2014-03-16T05:20:04.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">题外话：</h2>
 <p>本来预定下周一到的耳机今天（周六）中午就到了，听了一下感觉音效不错，但是也就那么回事，而且卡耳朵卡得有点紧，心想要不要退掉或者卖掉，点回去Amazon一看，已经是正常价140刀了，还是捡了个大便宜呀，可惜用老婆的号买第二个被Amazon cancel了，原因应该是两个账号用的信用卡卡号是一样的...这样理想计划买二卖一泡汤了...不要太贪心嘛 </p>
 <p>昨晚Larry请我去看电影，极品飞车，3D效果很爽，周五中午公司有披萨，结果一天没出办公室，屁股受不了，晚上本想回家的，下班太累，于是就给自己个借口去放松一下，结果错过老爸发来的Facetime，晚上11点半到家，打回去老爸问我干嘛去了，不想对老爸撒谎，如实说同事请看电影了，“咦也，你看人家”...羞愧难当</p>
@@ -59,22 +195,22 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
 ]]></content>
     
     
-      <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
+      <category term="interview" scheme="http://johnnyhuo.github.io/tags/interview/"/>
     
-      <category term="job hunting" scheme="http://yoursite.com/tags/job%20hunting/"/>
+      <category term="job hunting" scheme="http://johnnyhuo.github.io/tags/job%20hunting/"/>
     
-      <category term="thread" scheme="http://yoursite.com/tags/thread/"/>
+      <category term="thread &amp; process" scheme="http://johnnyhuo.github.io/tags/thread%20&%20process/"/>
     
-      <category term="diary" scheme="http://yoursite.com/tags/diary/"/>
+      <category term="diary" scheme="http://johnnyhuo.github.io/tags/diary/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[拖拖拉拉还是开始干正事吧]]></title>
-    <link href="http://yoursite.com/2014/03/13/%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89%E8%BF%98%E6%98%AF%E5%BC%80%E5%A7%8B%E5%B9%B2%E6%AD%A3%E4%BA%8B%E5%90%A7/"/>
-    <id>http://yoursite.com/2014/03/13/拖拖拉拉还是开始干正事吧/</id>
+    <link href="http://johnnyhuo.github.io/2014/03/13/%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89%E8%BF%98%E6%98%AF%E5%BC%80%E5%A7%8B%E5%B9%B2%E6%AD%A3%E4%BA%8B%E5%90%A7/"/>
+    <id>http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/</id>
     <published>2014-03-14T06:48:00.000Z</published>
-    <updated>2014-03-16T05:19:14.000Z</updated>
+    <updated>2014-03-16T05:20:14.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">时间流水账：</h2>
 <p>7点半下班，7点45到家，没有做饭，随便吃吃蝴蝶酥+牛奶，到现在11点50，有4个小时的时间...看大酒神视频一个多小时，研究对比amazon上面thunderbolt转接线又不知过了多久，期间做了一点点正事就是把老婆要求的在职证明又重新扫描了一遍。
 这种时间效率做什么都绝无成功之可能啊！</p>
@@ -186,20 +322,20 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
 ]]></content>
     
     
-      <category term="interview" scheme="http://yoursite.com/tags/interview/"/>
+      <category term="interview" scheme="http://johnnyhuo.github.io/tags/interview/"/>
     
-      <category term="job hunting" scheme="http://yoursite.com/tags/job%20hunting/"/>
+      <category term="job hunting" scheme="http://johnnyhuo.github.io/tags/job%20hunting/"/>
     
-      <category term="diary" scheme="http://yoursite.com/tags/diary/"/>
+      <category term="diary" scheme="http://johnnyhuo.github.io/tags/diary/"/>
     
-      <category term="thread &amp; process" scheme="http://yoursite.com/tags/thread%20&%20process/"/>
+      <category term="thread &amp; process" scheme="http://johnnyhuo.github.io/tags/thread%20&%20process/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[@Value,Spring,static-argument]]></title>
-    <link href="http://yoursite.com/2014/03/13/@Value,spring,static-argument/"/>
-    <id>http://yoursite.com/2014/03/13/@Value,spring,static-argument/</id>
+    <link href="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/"/>
+    <id>http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/</id>
     <published>2014-03-13T07:29:49.000Z</published>
     <updated>2014-03-13T07:59:13.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">遇到的问题：</h2>
@@ -584,16 +720,16 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
 ]]></content>
     
     
-      <category term="Work" scheme="http://yoursite.com/tags/Work/"/>
+      <category term="Work" scheme="http://johnnyhuo.github.io/tags/Work/"/>
     
-      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+      <category term="Spring" scheme="http://johnnyhuo.github.io/tags/Spring/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[终于搞定博客了]]></title>
-    <link href="http://yoursite.com/2014/03/13/test/"/>
-    <id>http://yoursite.com/2014/03/13/test/</id>
+    <link href="http://johnnyhuo.github.io/2014/03/13/test/"/>
+    <id>http://johnnyhuo.github.io/2014/03/13/test/</id>
     <published>2014-03-13T07:21:11.000Z</published>
     <updated>2014-03-13T08:25:35.000Z</updated>
     <content type="html"><![CDATA[<h1 id="hello-world-">Hello World...</h1>
@@ -619,8 +755,8 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://yoursite.com/2014/03/13/hello-world/"/>
-    <id>http://yoursite.com/2014/03/13/hello-world/</id>
+    <link href="http://johnnyhuo.github.io/2014/03/13/hello-world/"/>
+    <id>http://johnnyhuo.github.io/2014/03/13/hello-world/</id>
     <published>2014-03-13T07:04:54.000Z</published>
     <updated>2014-03-13T07:04:54.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://zespia.tw/hexo" target="_blank">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank">documentation</a> to learn how to use.</p>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: udp | My Realm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title">
+<meta name="og:url" content="http://johnnyhuo.github.io/tags/udp/">
+<meta name="og:image">
+<meta name="og:site_name" content="My Realm">
+<meta name="og:description">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="My Realm" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My Realm</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://johnnyhuo.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-tcp和udp的不同" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/15/tcp和udp的不同/" class="article-date">
+  <time datetime="2014-03-16T05:40:31.000Z" itemprop="datePublished">Mar 15 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/15/tcp和udp的不同/">tcp和udp的不同</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>There are two types of Internet Protocol (IP) traffic. They are TCP or Transmission Control Protocol and UDP or User Datagram Protocol. TCP is connection oriented = once a connection is established, data can be sent bidirectional. UDP is a simpler, connectionless Internet protocol. Multiple messages are sent as packets in chunks using UDP.</p>
+<h2 id="differences-list">Differences List</h2>
+<ul>
+<li><p>Connection:</p>
+<ul>
+<li>TCP is a connection-oriented protocol.</li>
+<li>UDP is a connectionless protocol.</li>
+</ul>
+</li>
+<li><p>Functions: </p>
+<ul>
+<li>As a message makes its way across the internet from one computer to another. This is connection based.</li>
+<li>UDP is also a protocol used in message transport or transfer. This is not connection based which means that one program can send a load of packets to another and that would be the end of the relationship.</li>
+</ul>
+</li>
+<li><p>Usage:</p>
+<ul>
+<li>TCP is suited for applications that require high reliability, and transmission time is relatively less critical. </li>
+<li>UDP is suitable for applications that need fast, efficient transmission, such as games. UDP&#39;s stateless nature is also useful for servers that answer small queries from huge numbers of clients.</li>
+</ul>
+</li>
+<li><p>Examples: </p>
+<ul>
+<li>TCP: HTTP, HTTPs, FTP, SMTP, Telnet</li>
+<li>UDP: DNS,  DHCP, TFTP, SNMP, RIP, VOIP</li>
+</ul>
+</li>
+<li><p>Ordering of data packets</p>
+<ul>
+<li>TCP rearranges data packets in the order specified. </li>
+<li>UDP has no inherent order as all packets are independent of each other. If ordering is required, it has to be managed by the application layer.</li>
+</ul>
+</li>
+<li><p>Speed of transfer</p>
+<ul>
+<li>TCP is slower that UDP</li>
+<li>UDP is faster because there is no error-checking for packets.</li>
+</ul>
+</li>
+<li><p>Reliability</p>
+<ul>
+<li>There is absolute guarantee that the data transferred remains intact and arrives in the same order in which it was sent.</li>
+<li>There is no guarantee that the messages or packets sent would reach at all.</li>
+</ul>
+</li>
+<li><p>Header Size</p>
+<ul>
+<li>TCP header size is 20 bytes.</li>
+<li>UDP Header size is 8 bytes.</li>
+</ul>
+</li>
+<li><p>Common Header Fields</p>
+<ul>
+<li>TCP: Source port, Destination port, Check Sum.</li>
+<li>UDP: Source port, Destination port, Check Sum.</li>
+</ul>
+</li>
+<li><p>Streaming of Data</p>
+<ul>
+<li>TCP: Data is read as a <em>byte stream</em>, <em>no distinguishing indications</em> are transmitted to signal message(segment) boundaries.</li>
+<li>UDP: Packets are sent <em>individually</em> and are checked for integrity <em>only if they arrive</em>. Packets have <strong>definite boundaries</strong> which are honored upon receipt, meaning a read operation at the receiver socket will yield an entire message as it was originally sent.</li>
+</ul>
+</li>
+<li><p>Weight</p>
+<ul>
+<li>TCP is <strong>heavy-weight</strong>. TCP requires three packets to set up a socket connection, before any user data can be sent. TCP handles reliability and congestion control.</li>
+<li>UDP is lightweight. There is no ordering of messages, no tracking connections, etc. It is a small transport layer designed on top of IP.</li>
+</ul>
+</li>
+<li><p>Data Flow Control</p>
+<ul>
+<li>TCP does flow control. </li>
+<li>UDP does not have an option for flow control.</li>
+</ul>
+</li>
+<li><p>Error Checking</p>
+<ul>
+<li>TCP does error checking</li>
+<li>UDP does error checking too, but no recovery options.</li>
+</ul>
+</li>
+<li><p>Fields</p>
+<ul>
+<li>TCP: 1.Sequence Number, 2.AcK number, 3.Data offset, 4.Reserved, 5.Control bit, 6,Window, 7.Urgent Pointer, 8.Options, 9.Padding, 10.Check Sum, 11.Source port, 12.Destination port</li>
+<li>UDP: 1.Length,2.Source port, 3.Destination port, 4.Check Sum.</li>
+</ul>
+</li>
+<li><p>Acknowledgement</p>
+<ul>
+<li>TCP: Acknowledgement segments</li>
+<li>UDP: No Acknowledgement</li>
+</ul>
+</li>
+<li><p>Handshake</p>
+<ul>
+<li>TCP: SYN, SYN-ACK, ACK</li>
+<li>UDP: No handshake(connectionless protocol)</li>
+</ul>
+</li>
+<li><p>Checksum</p>
+<ul>
+<li>TCP: checksum</li>
+<li>UDP: to delete errors.</li>
+</ul>
+<h2 id="differences-in-data-transfer-features">Differences in Data Transfer Features</h2>
+<p>TCP ensures a reliable and ordered delivery of a stream of bytes from user to server or vice versa. UDP is not dedicated to end to end connections and communication does not check readiness of receiver.</p>
+<h2 id="reliability">Reliability</h2>
+<p>TCP is more reliable since it manages message acknowledgment and retransmissions in case of lost parts. Thus there is absolutely no missing data. UDP does not ensure that communication has reached receiver since concepts of acknowledgment, time out and retransmission are not present.</p>
+<h2 id="ordering">Ordering</h2>
+<p>TCP transmissions are sent in a sequence and they are received in the same sequence. In the event of data segments arriving in wrong order, TCP reorders and delivers application. In the case of UDP, sent message sequence may not be maintained when it reaches receiving application. There is absolutely no way of predicting the order in which message will be received.</p>
+<h2 id="connection">Connection</h2>
+<p>TCP is a heavy weight connection requiring three packets for a socket connection and handles congestion control and reliability. UDP is a lightweight transport layer designed atop an IP. There are no tracking connections or ordering of messages.</p>
+<h2 id="method-of-transfer">Method of transfer</h2>
+<p>TCP reads data as a byte stream and message is transmitted to segment boundaries. UDP messages are packets which are sent individually and on arrival are checked for their integrity. Packets have defined boundaries while ata stream has none.</p>
+<h2 id="how-tcp-and-udp-work">How TCP and UDP work</h2>
+<p>A TCP connection is established via a <a href="http://en.wikipedia.org/w/index.php?title=Transmission_Control_Protocol&amp;oldid=342876584#Connection_establishment" target="_blank">three way handshake</a>, which is a process of initiating and acknowledging a connection. Once the connection is established data transfer can begin. After transmission, the connection is terminated by closing of all established virtual circuits.</p>
+<p>UDP uses a simple transmission model without implicit hand-shaking dialogues for guaranteeing reliability, ordering, or data integrity. Thus, UDP provides an unreliable service datagrams may arrive out of order, appear duplicated, or go missing without notice. UDP assumes that error checking and correction is either not necessary or performed in the application, avoiding the overhead of such processing at the network interface level. Unlike TCP, UDP is compatible with packet broadcasts(sending to all on local network) and multicasting(seng to all subscribers).</p>
+<h2 id="different-applications-of-tcp-and-udp">Different Applications of TCP and UDP</h2>
+<p>Web browsing, email and file transfer are common applications that make use of TCP. TCP is used to control segment size, rate of data exchange, flow control and network congestion. TCP is preferred where error correction facilities are required at network interface level. UDP is largely used by time sensitive applications as well as by servers that answer small queries from huge number of clients. UDP is compatible with packet broadcast - sending to all on a network and multicasting - sending to all subscribers. UDP is commonly used in Domain Name System, Voice over IP, Trivial File Transfer Protocol and online games.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="o6exw21o6jehwm5x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/">udp</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 20.00px;">diary</a><a href="/tags/interview/" style="font-size: 20.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 20.00px;">job hunting</a><a href="/tags/tcp/" style="font-size: 10.00px;">tcp</a><a href="/tags/thread & process/" style="font-size: 20.00px;">thread & process</a><a href="/tags/udp/" style="font-size: 10.00px;">udp</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/03/15/tcp和udp的不同/">tcp和udp的不同</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/15/接上：拖拖拉拉/">接上：拖拖拉拉</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/13/拖拖拉拉还是开始干正事吧/">拖拖拉拉还是开始干正事吧</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/13/@Value,spring,static-argument/">@Value,Spring,static-argument</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/13/test/">终于搞定博客了</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
