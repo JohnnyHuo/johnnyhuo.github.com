@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-03-17T07:53:21.442Z</updated>
+  <updated>2014-03-17T07:54:48.263Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/"/>
     <id>http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/</id>
     <published>2014-03-17T05:36:08.000Z</published>
-    <updated>2014-03-17T07:53:14.000Z</updated>
+    <updated>2014-03-17T07:54:41.000Z</updated>
     <content type="html"><![CDATA[<p>Given an array of integers, find two numbers such that they add up to a specific target number.</p>
 <p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
 <p>You may assume that each input would have exactly one solution.</p>
@@ -303,8 +303,8 @@ Last executed input:    [3,2,4], 6</p>
 <p>还是参考<a href="http://stackoverflow.com/questions/9297899/arrays-length-property" target="_blank">StackOverflow</a>的解释:
     为什么ArrayList可以用ArrayList.size()来获取ArrayList的长度, 而 Array.length -- 并不是一个method, 却可以得到Array的长度呢? </p>
 <p>  <a href="http://stackoverflow.com/a/9297956/2345313" target="_blank">Arrays are special objects in java</a>, they have <strong>a simple attribute named length which is final</strong>. 
-  There is no &quot;class definition&quot; of an array (you can&#39;t find it in any .class file), they&#39;re a part of the language itself.
-  <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html#jls-10.7" target="_blank">10.7. Array Members</a></p>
+  There is no &quot;class definition&quot; of an array (you can&#39;t find it in any .class file), they&#39;re a part of the language itself.</p>
+<p>  <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html#jls-10.7" target="_blank">10.7. Array Members</a></p>
 <blockquote>
 <p>The members of an array type are all of the following:
 The public final field length, which contains the number of components of the array. length may be positive or zero.
