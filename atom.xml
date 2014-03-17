@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-03-16T09:18:57.067Z</updated>
+  <updated>2014-03-17T07:52:47.003Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -13,6 +13,360 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[LeetCode:TwoSum]]></title>
+    <link href="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/"/>
+    <id>http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/</id>
+    <published>2014-03-17T05:36:08.000Z</published>
+    <updated>2014-03-17T07:43:58.000Z</updated>
+    <content type="html"><![CDATA[<p>Given an array of integers, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution.</p>
+<p>Input: numbers={2, 7, 11, 15}, target=9
+Output: index1=1, index2=2</p>
+<p>OJ: </p>
+<ul>
+<li>首先用最笨的方法来解，不过好像Java Array的相关method我都忘得差不多了....记录下来再更正吧</li>
+</ul>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = numbers.size();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l; i++){
+            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Result:
+  Line4: error: cannot find symbol: method size()</li>
+<li><p>忘记有没有直接看Array长度的函数了，先不去查文档，转化成熟悉的String来做</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="comment">//int l = numbers.size();</span>
+        l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l; i++){
+            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: 
+  Line 6: error: cannot find symbol: variable l
+  这个错误就是粗心大意了, 后面还有一个错误: 
+  Line 9: error: variable j is already defined in method twoSum(int[],int)
+  我还是再看一遍code再提交吧</p>
+</li>
+<li><p>审查了一遍,又发现个错误, i的边界判定不应该是length, 而应该是length - 1</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: 
+  Line 9: error: unexpected type</p>
+</li>
+<li><p>太不严谨了 - -, 平常用eclipse确实有依赖性, 函数名自己都不去记了, 这种 &quot;==&quot; 自己居然也没注意到</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+  Line 17: error: missing return statement</p>
+</li>
+<li><p>简直是错误百出</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+  Runtime Error Message:    Line 9: java.lang.ArrayIndexOutOfBoundsException: 3
+  Last executed input:    [3,2,4], 6</p>
+</li>
+<li><p>再改!</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= l - <span class="number">2</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt;= l - <span class="number">1</span>; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+Runtime Error Message:    Line 9: java.lang.ArrayIndexOutOfBoundsException: 3
+Last executed input:    [3,2,4], 6</p>
+</li>
+<li><p><strong>IMPORTANT</strong>: 之所以会这样, 是因为Arrays.toString(), 并不是返回的Arrays里面元素的值, 比如 int[] numbers = {3, 2, 4}, 实测 System.out.println(numbers.toString()) 结果为 [I@53281264
+所以上面code中的length实际为11, 怪不得会出现ArrayIndexOutOfBoundsException.</p>
+</li>
+</ul>
+<h1 id="-arrays-arrays-length">正确获得Arrays长度的方法: Arrays.length</h1>
+<p>之前刷提的时候不知所以然, 这次我们进阶了, 其实刚才写代码的时候也想到直接用 Arrays.length, 但是这个 .length不是一个method呀, 这在一切皆是Object的Java中显得有些不合群, 所以没用, 这次问题的出现是必然的,
+因为我没有系统的学习过数据结构也好, 算法也好, Java也好, 以点带面, 查缺补漏吧.</p>
+<p>还是参考<a href="http://stackoverflow.com/questions/9297899/arrays-length-property" target="_blank">StackOverflow</a>的解释:
+    为什么ArrayList可以用ArrayList.size()来获取ArrayList的长度, 而 Array.length -- 并不是一个method, 却可以得到Array的长度呢? </p>
+<p>  <a href="http://stackoverflow.com/a/9297956/2345313" target="_blank">Arrays are special objects in java</a>, they have <strong>a simple attribute named length which is final</strong>. 
+  There is no &quot;class definition&quot; of an array (you can&#39;t find it in any .class file), they&#39;re a part of the language itself.
+  <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html#jls-10.7" target="_blank">10.7. Array Members</a></p>
+<blockquote>
+<p>The members of an array type are all of the following:
+The public final field length, which contains the number of components of the array. length may be positive or zero.
+The public method clone, which overrides the method of the same name in class Object and throws no checked exceptions. The return type of the clone method of an array type T[] is T[].
+A clone of a multidimensional array is shallow, which is to say that it creates only a single new array. Subarrays are shared.
+All the members inherited from class Object; <strong>the only method of Object that is not inherited is its clone method.</strong>
+<strong>Note also that ArrayList.size() provides the number of object actually stored in the array whereas myArray.length ([]) provides the &quot;capacity&quot;. That is, if for myArray = new int[10];, it returns 10. It is not the number of objects you&#39;ve put in the array.</strong></p>
+</blockquote>
+<ul>
+<li><p>改正Arrays.length :</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="comment">// int l = source.length();</span>
+        <span class="keyword">int</span> l = numbers.length;
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= l - <span class="number">2</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt;= l - <span class="number">1</span>; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>改正这一错误之后的代码可以正确运行了, 但是 leetcode的OJ表示此程序太慢了, Time Limit Exceeded. </p>
+</li>
+</ul>
+<p>这并不出乎意料, 因为这个是最笨的方法, 时间复杂度应该是O(n^2)</p>
+]]></content>
+    
+    
+  </entry>
   
   <entry>
     <title><![CDATA[tcp和udp的不同]]></title>

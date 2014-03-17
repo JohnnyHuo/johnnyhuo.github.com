@@ -59,6 +59,385 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcodetwosum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/16/leetcodetwosum/" class="article-date">
+  <time datetime="2014-03-17T05:36:08.000Z" itemprop="datePublished">Mar 16 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/16/leetcodetwosum/">LeetCode:TwoSum</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given an array of integers, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution.</p>
+<p>Input: numbers={2, 7, 11, 15}, target=9
+Output: index1=1, index2=2</p>
+<p>OJ: </p>
+<ul>
+<li>首先用最笨的方法来解，不过好像Java Array的相关method我都忘得差不多了....记录下来再更正吧</li>
+</ul>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = numbers.size();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l; i++){
+            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+
+<ul>
+<li>Result:
+  Line4: error: cannot find symbol: method size()</li>
+<li><p>忘记有没有直接看Array长度的函数了，先不去查文档，转化成熟悉的String来做</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="comment">//int l = numbers.size();</span>
+        l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l; i++){
+            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: 
+  Line 6: error: cannot find symbol: variable l
+  这个错误就是粗心大意了, 后面还有一个错误: 
+  Line 9: error: variable j is already defined in method twoSum(int[],int)
+  我还是再看一遍code再提交吧</p>
+</li>
+<li><p>审查了一遍,又发现个错误, i的边界判定不应该是length, 而应该是length - 1</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] = target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: 
+  Line 9: error: unexpected type</p>
+</li>
+<li><p>太不严谨了 - -, 平常用eclipse确实有依赖性, 函数名自己都不去记了, 这种 &quot;==&quot; 自己居然也没注意到</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+  Line 17: error: missing return statement</p>
+</li>
+<li><p>简直是错误百出</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; l - <span class="number">1</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i;
+                    result[<span class="number">1</span>] = j;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+  Runtime Error Message:    Line 9: java.lang.ArrayIndexOutOfBoundsException: 3
+  Last executed input:    [3,2,4], 6</p>
+</li>
+<li><p>再改!</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="keyword">int</span> l = source.length();
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= l - <span class="number">2</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt;= l - <span class="number">1</span>; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result:
+Runtime Error Message:    Line 9: java.lang.ArrayIndexOutOfBoundsException: 3
+Last executed input:    [3,2,4], 6</p>
+</li>
+<li><p><strong>IMPORTANT</strong>: 之所以会这样, 是因为Arrays.toString(), 并不是返回的Arrays里面元素的值, 比如 int[] numbers = {3, 2, 4}, 实测 System.out.println(numbers.toString()) 结果为 [I@53281264
+所以上面code中的length实际为11, 怪不得会出现ArrayIndexOutOfBoundsException.</p>
+</li>
+</ul>
+<h1 id="-arrays-arrays-length">正确获得Arrays长度的方法: Arrays.length</h1>
+<p>之前刷提的时候不知所以然, 这次我们进阶了, 其实刚才写代码的时候也想到直接用 Arrays.length, 但是这个 .length不是一个method呀, 这在一切皆是Object的Java中显得有些不合群, 所以没用, 这次问题的出现是必然的,
+因为我没有系统的学习过数据结构也好, 算法也好, Java也好, 以点带面, 查缺补漏吧.</p>
+<p>还是参考<a href="http://stackoverflow.com/questions/9297899/arrays-length-property" target="_blank">StackOverflow</a>的解释:
+    为什么ArrayList可以用ArrayList.size()来获取ArrayList的长度, 而 Array.length -- 并不是一个method, 却可以得到Array的长度呢? </p>
+<p>  <a href="http://stackoverflow.com/a/9297956/2345313" target="_blank">Arrays are special objects in java</a>, they have <strong>a simple attribute named length which is final</strong>. 
+  There is no &quot;class definition&quot; of an array (you can&#39;t find it in any .class file), they&#39;re a part of the language itself.
+  <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html#jls-10.7" target="_blank">10.7. Array Members</a></p>
+<blockquote>
+<p>The members of an array type are all of the following:
+The public final field length, which contains the number of components of the array. length may be positive or zero.
+The public method clone, which overrides the method of the same name in class Object and throws no checked exceptions. The return type of the clone method of an array type T[] is T[].
+A clone of a multidimensional array is shallow, which is to say that it creates only a single new array. Subarrays are shared.
+All the members inherited from class Object; <strong>the only method of Object that is not inherited is its clone method.</strong>
+<strong>Note also that ArrayList.size() provides the number of object actually stored in the array whereas myArray.length ([]) provides the &quot;capacity&quot;. That is, if for myArray = new int[10];, it returns 10. It is not the number of objects you&#39;ve put in the array.</strong></p>
+</blockquote>
+<ul>
+<li><p>改正Arrays.length :</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        String source  = numbers.toString();
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>]; 
+        <span class="comment">// int l = source.length();</span>
+        <span class="keyword">int</span> l = numbers.length;
+        <span class="keyword">int</span> i, j;
+        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= l - <span class="number">2</span>; i++){
+            <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt;= l - <span class="number">1</span>; j++){
+                <span class="keyword">if</span>(numbers[i] + numbers[j] == target){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+        
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>改正这一错误之后的代码可以正确运行了, 但是 leetcode的OJ表示此程序太慢了, Time Limit Exceeded. </p>
+</li>
+</ul>
+<p>这并不出乎意料, 因为这个是最笨的方法, 时间复杂度应该是O(n^2)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="m79n56li5rzp3c95" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-tcp和udp的不同" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/03/15/tcp和udp的不同/" class="article-date">
@@ -207,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="rdapbh8eyjyydfpg" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="wxw6wv4amtzw4ybf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
@@ -281,7 +660,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="fgn5ayfiky68o3q9" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="nd9llm4l0f0zu42p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -427,7 +806,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="o4ixo5d4wgbezcou" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="lx3451qh9g9kgn0k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -844,7 +1223,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="dagk1hbfca3nmwoa" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="rjw01u4idowu3ahj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
@@ -898,7 +1277,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="6m0s25z91u0wfwek" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="eappqcwpnjzk369q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -935,7 +1314,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="2dc71km6gezvigb3" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="jggridzziy0x2vjx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -974,7 +1353,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -984,6 +1363,10 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/03/16/leetcodetwosum/">LeetCode:TwoSum</a>
+          </li>
         
           <li>
             <a href="/2014/03/15/tcp和udp的不同/">tcp和udp的不同</a>
@@ -999,10 +1382,6 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
         
           <li>
             <a href="/2014/03/13/@Value,spring,static-argument/">@Value,Spring,static-argument</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/13/test/">终于搞定博客了</a>
           </li>
         
       </ul>
