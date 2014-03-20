@@ -59,6 +59,280 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2sum_continue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/20/2sum_continue/" class="article-date">
+  <time datetime="2014-03-20T09:58:30.000Z" itemprop="datePublished">Mar 20 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/20/2sum_continue/">2Sum_continue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="-hashmap-">凭着记忆写一下hashmap的写法:</h2>
+<ul>
+<li><p>其实已经是修改过几个小毛病的版本, 比如<strong>new HashMap<integer, integer>;</strong></p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = numbers.length - <span class="number">1</span>;
+        <span class="keyword">while</span>(i &lt;= j){
+            <span class="keyword">if</span>(!map.containsKey(numbers[j])){
+                map.put(target - numbers[i], numbers[i]);
+                i++;
+                j--;
+            }<span class="keyword">else</span>{
+                result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                <span class="keyword">return</span> result;
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>Submission Result: Wrong Answer
+
+<span class="label">Input:</span>	[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>], <span class="number">6</span>
+<span class="label">Output:</span>	<span class="number">0</span>, <span class="number">0</span>
+<span class="label">Expected:</span>	<span class="number">2</span>, <span class="number">3</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>调整一下i和j的变更条件:</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = numbers.length - <span class="number">1</span>;
+        <span class="keyword">while</span>(i &lt;= j){
+            <span class="keyword">while</span>(j &gt; <span class="number">0</span>){
+                <span class="keyword">if</span>(!map.containsKey(numbers[j])){
+                    map.put(target - numbers[i], numbers[i]);
+                    i++;
+                }<span class="keyword">else</span>{
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+                j--;
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>Submission Result: Wrong Answer
+
+<span class="label">Input:</span>	[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>], <span class="number">6</span>
+<span class="label">Output:</span>	<span class="number">0</span>, <span class="number">0</span>
+<span class="label">Expected:</span>	<span class="number">2</span>, <span class="number">3</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>分析: 理论上之前本方法的时间复杂度是O(n^2); 如果按照上面写法两个while循环钱淘的话, 依然还是O(n^2), 这样就没意义了, 应该扫一遍数据进hashtable就可以判断出是否有结果了, 上面的问题就是怎样在得到两个相加和为target的数值之后取得他们的index, </p>
+</li>
+</ul>
+<p><strong>何不在扫入hashmap的时候把index作为value存入呢?</strong> 这有点茅塞顿开的意思, 但是悲剧的是依然写错了..</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">class</span> Solution {
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; numbers.length){
+            <span class="keyword">if</span>(!map.containsKey(numbers[i])){
+                map.put(target - numbers[i], i);
+                i++;
+            }<span class="keyword">else</span>{
+                j = map.<span class="keyword">get</span>(target - numbers[i]);
+                <span class="keyword">if</span>(i &lt; map.<span class="keyword">get</span>(target - numbers[i])){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = map.<span class="keyword">get</span>(target - numbers[i] + <span class="number">1</span>);
+                    <span class="keyword">return</span> result;
+                }<span class="keyword">else</span>{ 
+                    result[<span class="number">0</span>] = j + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = i + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+
+<ul>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>Submission Result: <span class="keyword">Compile</span> Error
+
+<span class="keyword">Line</span> <span class="number">12</span>: error: incompatible types
+</pre></td></tr></table></figure>
+</li>
+<li><p>借助于eclipse debug, 终于找到问题所在, 应该去get(numbers[i]), 另外不加(Integer) leetcode无法贬编译 + 这个运算符, 其实我已经定义了get出来的是Integer, 按理说不用转换, 不知道为什么, 可能这样更严谨?</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">class</span> Solution {
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; numbers.length){
+            <span class="keyword">if</span>(!map.containsKey(numbers[i])){
+                map.put(target - numbers[i], i);
+                i++;
+            }<span class="keyword">else</span>{
+                result[<span class="number">0</span>] = (Integer)map.<span class="keyword">get</span>( numbers[i]) + <span class="number">1</span>;
+                result[<span class="number">1</span>] = i + <span class="number">1</span>;
+                <span class="keyword">return</span> result;
+            }
+
+        }
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+
+<h2 id="-solution-solution-map-get-numbers-i-">总结: 自己想出来的和之前参考的solution虽然大致思路一样, 但是具体的实现上还是不同的, 而且貌似自己写的更简洁一些. 最后实在找不到问题所在了去看了下之前的solution, 发现那边也是直接<em>map.get( numbers[i])</em>, 并没有加强制类型转换. 不过加上肯定不会错就是了.</h2>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="6k3qlw7kg4su1mwc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcodetwosum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/03/16/leetcodetwosum/" class="article-date">
@@ -428,7 +702,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="lxtqsks18bc5uz21" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="kaivrdn71h0ce6en" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -588,7 +862,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="1zw8z236w4ofdae3" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="c2jog7upzygfdpzq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
@@ -662,7 +936,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="68c83l5kt3p1u7ig" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="ykhsvhgjc911g6an" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -808,7 +1082,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="d8p8a94b1552jc6a" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="qb4226b4qaieq4us" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -1225,7 +1499,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="9fjwe4alr2s09hqv" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="av3ljteq3kz7olhx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
@@ -1279,7 +1553,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="3cgf1kuza4q9gwze" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="edye0573uj66uxun" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1316,7 +1590,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="mshg7j7b0fsduzaa" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="mzix86hrzg4n58m5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1337,7 +1611,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TwoSum/">TwoSum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/">udp</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TwoSum/">TwoSum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/">udp</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1346,7 +1620,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/TwoSum/" style="font-size: 10.00px;">TwoSum</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 20.00px;">diary</a><a href="/tags/interview/" style="font-size: 20.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 20.00px;">job hunting</a><a href="/tags/leetcode/" style="font-size: 10.00px;">leetcode</a><a href="/tags/tcp/" style="font-size: 10.00px;">tcp</a><a href="/tags/thread & process/" style="font-size: 20.00px;">thread & process</a><a href="/tags/udp/" style="font-size: 10.00px;">udp</a>
+      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/TwoSum/" style="font-size: 20.00px;">TwoSum</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 20.00px;">diary</a><a href="/tags/interview/" style="font-size: 20.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 20.00px;">job hunting</a><a href="/tags/leetcode/" style="font-size: 20.00px;">leetcode</a><a href="/tags/tcp/" style="font-size: 10.00px;">tcp</a><a href="/tags/thread & process/" style="font-size: 20.00px;">thread & process</a><a href="/tags/udp/" style="font-size: 10.00px;">udp</a>
     </div>
   </div>
 
@@ -1355,7 +1629,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">7</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -1365,6 +1639,10 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/03/20/2sum_continue/">2Sum_continue</a>
+          </li>
         
           <li>
             <a href="/2014/03/16/leetcodetwosum/">LeetCode:TwoSum (1)</a>
@@ -1380,10 +1658,6 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
         
           <li>
             <a href="/2014/03/13/拖拖拉拉还是开始干正事吧/">拖拖拉拉还是开始干正事吧</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/13/@Value,spring,static-argument/">@Value,Spring,static-argument</a>
           </li>
         
       </ul>

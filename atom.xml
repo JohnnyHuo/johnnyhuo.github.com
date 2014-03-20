@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-03-17T07:56:12.197Z</updated>
+  <updated>2014-03-20T11:07:33.525Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -13,6 +13,257 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[2Sum_continue]]></title>
+    <link href="http://johnnyhuo.github.io/2014/03/20/2sum_continue/"/>
+    <id>http://johnnyhuo.github.io/2014/03/20/2sum_continue/</id>
+    <published>2014-03-20T09:58:30.000Z</published>
+    <updated>2014-03-20T11:07:16.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="-hashmap-">凭着记忆写一下hashmap的写法:</h2>
+<ul>
+<li><p>其实已经是修改过几个小毛病的版本, 比如<strong>new HashMap<integer, integer>;</strong></p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = numbers.length - <span class="number">1</span>;
+        <span class="keyword">while</span>(i &lt;= j){
+            <span class="keyword">if</span>(!map.containsKey(numbers[j])){
+                map.put(target - numbers[i], numbers[i]);
+                i++;
+                j--;
+            }<span class="keyword">else</span>{
+                result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                <span class="keyword">return</span> result;
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>Submission Result: Wrong Answer
+
+<span class="label">Input:</span>	[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>], <span class="number">6</span>
+<span class="label">Output:</span>	<span class="number">0</span>, <span class="number">0</span>
+<span class="label">Expected:</span>	<span class="number">2</span>, <span class="number">3</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>调整一下i和j的变更条件:</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = numbers.length - <span class="number">1</span>;
+        <span class="keyword">while</span>(i &lt;= j){
+            <span class="keyword">while</span>(j &gt; <span class="number">0</span>){
+                <span class="keyword">if</span>(!map.containsKey(numbers[j])){
+                    map.put(target - numbers[i], numbers[i]);
+                    i++;
+                }<span class="keyword">else</span>{
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = j + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+                j--;
+            }
+        }
+        
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+</li>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>Submission Result: Wrong Answer
+
+<span class="label">Input:</span>	[<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>], <span class="number">6</span>
+<span class="label">Output:</span>	<span class="number">0</span>, <span class="number">0</span>
+<span class="label">Expected:</span>	<span class="number">2</span>, <span class="number">3</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>分析: 理论上之前本方法的时间复杂度是O(n^2); 如果按照上面写法两个while循环钱淘的话, 依然还是O(n^2), 这样就没意义了, 应该扫一遍数据进hashtable就可以判断出是否有结果了, 上面的问题就是怎样在得到两个相加和为target的数值之后取得他们的index, </p>
+</li>
+</ul>
+<p><strong>何不在扫入hashmap的时候把index作为value存入呢?</strong> 这有点茅塞顿开的意思, 但是悲剧的是依然写错了..</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">class</span> Solution {
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; numbers.length){
+            <span class="keyword">if</span>(!map.containsKey(numbers[i])){
+                map.put(target - numbers[i], i);
+                i++;
+            }<span class="keyword">else</span>{
+                j = map.<span class="keyword">get</span>(target - numbers[i]);
+                <span class="keyword">if</span>(i &lt; map.<span class="keyword">get</span>(target - numbers[i])){
+                    result[<span class="number">0</span>] = i + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = map.<span class="keyword">get</span>(target - numbers[i] + <span class="number">1</span>);
+                    <span class="keyword">return</span> result;
+                }<span class="keyword">else</span>{ 
+                    result[<span class="number">0</span>] = j + <span class="number">1</span>;
+                    result[<span class="number">1</span>] = i + <span class="number">1</span>;
+                    <span class="keyword">return</span> result;
+                }
+            }
+        }
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+
+<ul>
+<li><p>Result: </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>Submission Result: <span class="keyword">Compile</span> Error
+
+<span class="keyword">Line</span> <span class="number">12</span>: error: incompatible types
+</pre></td></tr></table></figure>
+</li>
+<li><p>借助于eclipse debug, 终于找到问题所在, 应该去get(numbers[i]), 另外不加(Integer) leetcode无法贬编译 + 这个运算符, 其实我已经定义了get出来的是Integer, 按理说不用转换, 不知道为什么, 可能这样更严谨?</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">class</span> Solution {
+    <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
+        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
+        Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">int</span> j = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; numbers.length){
+            <span class="keyword">if</span>(!map.containsKey(numbers[i])){
+                map.put(target - numbers[i], i);
+                i++;
+            }<span class="keyword">else</span>{
+                result[<span class="number">0</span>] = (Integer)map.<span class="keyword">get</span>( numbers[i]) + <span class="number">1</span>;
+                result[<span class="number">1</span>] = i + <span class="number">1</span>;
+                <span class="keyword">return</span> result;
+            }
+
+        }
+        <span class="keyword">return</span> result;
+    }
+}
+</pre></td></tr></table></figure>
+
+<h2 id="-solution-solution-map-get-numbers-i-">总结: 自己想出来的和之前参考的solution虽然大致思路一样, 但是具体的实现上还是不同的, 而且貌似自己写的更简洁一些. 最后实在找不到问题所在了去看了下之前的solution, 发现那边也是直接<em>map.get( numbers[i])</em>, 并没有加强制类型转换. 不过加上肯定不会错就是了.</h2>
+]]></content>
+    
+    
+      <category term="leetcode" scheme="http://johnnyhuo.github.io/tags/leetcode/"/>
+    
+      <category term="TwoSum" scheme="http://johnnyhuo.github.io/tags/TwoSum/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[LeetCode:TwoSum (1)]]></title>
