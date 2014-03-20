@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-03-20T11:07:33.525Z</updated>
+  <updated>2014-03-20T11:08:43.560Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://johnnyhuo.github.io/2014/03/20/2sum_continue/"/>
     <id>http://johnnyhuo.github.io/2014/03/20/2sum_continue/</id>
     <published>2014-03-20T09:58:30.000Z</published>
-    <updated>2014-03-20T11:07:16.000Z</updated>
+    <updated>2014-03-20T11:08:35.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-hashmap-">凭着记忆写一下hashmap的写法:</h2>
 <ul>
 <li><p>其实已经是修改过几个小毛病的版本, 比如<strong>new HashMap<integer, integer>;</strong></p>
@@ -232,13 +232,11 @@
 17
 18
 19
-20
 </pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">class</span> Solution {
     <span class="keyword">public</span> <span class="keyword">int</span>[] <span class="title">twoSum</span>(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) {
         <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];
         Map map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();
         <span class="keyword">int</span> i = <span class="number">0</span>;
-        <span class="keyword">int</span> j = <span class="number">0</span>;
         <span class="keyword">while</span>(i &lt; numbers.length){
             <span class="keyword">if</span>(!map.containsKey(numbers[i])){
                 map.put(target - numbers[i], i);
