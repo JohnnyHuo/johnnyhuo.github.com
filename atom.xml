@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-05-19T02:55:53.571Z</updated>
+  <updated>2014-05-19T03:02:59.210Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -19,10 +19,10 @@
     <link href="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/"/>
     <id>http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/</id>
     <published>2014-05-19T02:47:04.000Z</published>
-    <updated>2014-05-19T02:55:39.000Z</updated>
-    <content type="html"><![CDATA[<p>`
-Reverse Words in a String</p>
-<p>public class Solution {
+    <updated>2014-05-19T03:02:51.000Z</updated>
+    <content type="html"><![CDATA[<p>Reverse Words in a String
+`
+public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
         StringBuffer sb = new StringBuffer();
@@ -35,12 +35,13 @@ Reverse Words in a String</p>
     return reverse;
 }
 </code></pre><p>}</p>
-<hr>
+<h2 id="-">`</h2>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
 Output:    &quot;1 &quot;
 Expected:    &quot;1&quot;</p>
 <p>——————————
+`
 public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
@@ -54,12 +55,14 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 —————————————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>————————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -93,10 +96,12 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ——————————
 Submission Result: Compile Error</p>
 <p>Line 11: error: incomparable types: char and String</p>
 <p>————————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -129,11 +134,13 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>———————
+</code></pre><p>}
+`
+———————
 Submission Result: Compile Error</p>
 <p>Line 11: error: char cannot be dereferenced</p>
 <p>—————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -166,12 +173,14 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>—————</p>
+</code></pre><p>}
+`
+—————</p>
 <p>Submission Result: Compile Error</p>
 <p>Line 19: error: variable tail might not have been initialized</p>
-<p>——————</p>
-<p>public class Solution {
+<p>——————
+`
+public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
             return null;
@@ -203,13 +212,15 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>——————</p>
+</code></pre><p>}
+`
+——————</p>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
 Output:    null
 Expected:    &quot;&quot;
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
@@ -240,12 +251,14 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>——————
+`
 public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
@@ -284,11 +297,13 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ——————
 Submission Result: Compile Error</p>
 <p>Line 4: error: cannot find symbol: method size()
-————</p>
-<p>public class Solution {
+————
+`
+public class Solution {
     public String reverseWords(String s) {
         // if(s == &quot; &quot;){
         //     return &quot;&quot;;
@@ -332,6 +347,7 @@ Submission Result: Compile Error</p>
     return reverse;
 }
 </code></pre><p>}
+`
 ——————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
@@ -340,6 +356,7 @@ Expected:    &quot;1&quot;
 ———————
 第二天
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -381,6 +398,7 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 ———————
 Submission Result: Compile Error</p>
 <p>Line 10: error: char cannot be dereferenced
@@ -390,6 +408,7 @@ Submission Result: Compile Error</p>
 <p>use Character class:</p>
 <p>if(Character.isLetter(c)) {}</p>
 <p>————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -431,10 +450,12 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 —————————
 Submission Result: Compile Error</p>
 <p>Line 10: error: cannot find symbol: method isWhiteSpace(char)</p>
 <p>————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -475,11 +496,12 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Compile Error</p>
 <p>Line 25: error: cannot find symbol: method subString(int,int)
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -521,10 +543,12 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 ————————
 Submission Result: Compile Error</p>
 <p>Line 31: error: no suitable method found for split(char)
 ————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -565,12 +589,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ————————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
 Last executed input:    &quot; &quot;
 —————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -611,12 +636,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
 Last executed input:    &quot; &quot;
 ——————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -657,12 +683,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ——————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 Last executed input:    &quot; &quot;
 ——————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -705,13 +732,14 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>—————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -756,13 +784,15 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}</p>
-<p>—————————
+</code></pre><p>}
+`
+—————————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
 Output:    &quot; 1&quot;
 Expected:    &quot;1&quot;
 ———————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.length() == 0 || s == null){
@@ -788,13 +818,15 @@ public class Solution {
     return sb.toString();
 
 }
-</code></pre><p>}</p>
-<p>———————
+</code></pre><p>}
+`
+———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
-<p>————————</p>
+<p>————————
+`</p>
 <p>public class Solution {
     public String reverseWords(String s) {
         if(s.length() == 0 || s == null){
@@ -819,11 +851,10 @@ Expected:    &quot;&quot;</p>
     return sb.toString();
 
 }
-</code></pre><p>}
+</code></pre><p>}`
 ——————————
 ——————————
 Submission Result: Accepted</p>
-<p>`</p>
 ]]></content>
     
     

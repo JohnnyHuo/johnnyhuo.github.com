@@ -81,9 +81,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>`
-Reverse Words in a String</p>
-<p>public class Solution {
+        <p>Reverse Words in a String
+`
+public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
         StringBuffer sb = new StringBuffer();
@@ -96,12 +96,13 @@ Reverse Words in a String</p>
     return reverse;
 }
 </code></pre><p>}</p>
-<hr>
+<h2 id="-">`</h2>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
 Output:    &quot;1 &quot;
 Expected:    &quot;1&quot;</p>
 <p>——————————
+`
 public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
@@ -115,12 +116,14 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 —————————————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>————————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -154,10 +157,12 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ——————————
 Submission Result: Compile Error</p>
 <p>Line 11: error: incomparable types: char and String</p>
 <p>————————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -190,11 +195,13 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>———————
+</code></pre><p>}
+`
+———————
 Submission Result: Compile Error</p>
 <p>Line 11: error: char cannot be dereferenced</p>
 <p>—————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
@@ -227,12 +234,14 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>—————</p>
+</code></pre><p>}
+`
+—————</p>
 <p>Submission Result: Compile Error</p>
 <p>Line 19: error: variable tail might not have been initialized</p>
-<p>——————</p>
-<p>public class Solution {
+<p>——————
+`
+public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0){
             return null;
@@ -264,13 +273,15 @@ public class Solution {
     String reverse = sb.toString();
     return reverse;
 }
-</code></pre><p>}</p>
-<p>——————</p>
+</code></pre><p>}
+`
+——————</p>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
 Output:    null
 Expected:    &quot;&quot;
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
@@ -301,12 +312,14 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>——————
+`
 public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
@@ -345,11 +358,13 @@ public class Solution {
     return reverse;
 }
 </code></pre><p>}
+`
 ——————
 Submission Result: Compile Error</p>
 <p>Line 4: error: cannot find symbol: method size()
-————</p>
-<p>public class Solution {
+————
+`
+public class Solution {
     public String reverseWords(String s) {
         // if(s == &quot; &quot;){
         //     return &quot;&quot;;
@@ -393,6 +408,7 @@ Submission Result: Compile Error</p>
     return reverse;
 }
 </code></pre><p>}
+`
 ——————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
@@ -401,6 +417,7 @@ Expected:    &quot;1&quot;
 ———————
 第二天
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -442,6 +459,7 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 ———————
 Submission Result: Compile Error</p>
 <p>Line 10: error: char cannot be dereferenced
@@ -451,6 +469,7 @@ Submission Result: Compile Error</p>
 <p>use Character class:</p>
 <p>if(Character.isLetter(c)) {}</p>
 <p>————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -492,10 +511,12 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 —————————
 Submission Result: Compile Error</p>
 <p>Line 10: error: cannot find symbol: method isWhiteSpace(char)</p>
 <p>————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -536,11 +557,12 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Compile Error</p>
 <p>Line 25: error: cannot find symbol: method subString(int,int)
 ———————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -582,10 +604,12 @@ public class Solution {
     return sb.toString();
 }
 </code></pre><p>}
+`
 ————————
 Submission Result: Compile Error</p>
 <p>Line 31: error: no suitable method found for split(char)
 ————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -626,12 +650,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ————————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
 Last executed input:    &quot; &quot;
 —————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -672,12 +697,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
 Last executed input:    &quot; &quot;
 ——————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -718,12 +744,13 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ——————
 Submission Result: Runtime Error</p>
 <p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
 Last executed input:    &quot; &quot;
 ——————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -766,13 +793,14 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}
+</code></pre><p>}`
 ———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>—————————
+`
 public class Solution {
     public String reverseWords(String s) {</p>
 <pre><code>    int l = s.length();
@@ -817,13 +845,15 @@ public class Solution {
 
     return sb.toString();
 }
-</code></pre><p>}</p>
-<p>—————————
+</code></pre><p>}
+`
+—————————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
 Output:    &quot; 1&quot;
 Expected:    &quot;1&quot;
 ———————————
+`
 public class Solution {
     public String reverseWords(String s) {
         if(s.length() == 0 || s == null){
@@ -849,13 +879,15 @@ public class Solution {
     return sb.toString();
 
 }
-</code></pre><p>}</p>
-<p>———————
+</code></pre><p>}
+`
+———————
 Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
-<p>————————</p>
+<p>————————
+`</p>
 <p>public class Solution {
     public String reverseWords(String s) {
         if(s.length() == 0 || s == null){
@@ -880,16 +912,15 @@ Expected:    &quot;&quot;</p>
     return sb.toString();
 
 }
-</code></pre><p>}
+</code></pre><p>}`
 ——————————
 ——————————
 Submission Result: Accepted</p>
-<p>`</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/" data-id="wfjpd9j2o6fl8852" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/" data-id="xqb0usjhj1d9lxsf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/string/">string</a></li></ul>
@@ -1161,7 +1192,7 @@ Submission Result: Accepted</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="znb20wudvdfqy670" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="m23z1xg9gbcxqxmg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -1542,7 +1573,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="ugi0t5k7f2p6ntiq" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="jz1cvw0aku3pbjb4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -1702,7 +1733,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="iols1i797l6ong9l" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="xhmf011us9hkv59t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
@@ -1776,7 +1807,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="9ud79c9mznlf4zlp" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="pyjn91gof901isq0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -1922,7 +1953,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="18sqm0t4k112zvep" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="inmzg9gp5dvu0sm2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process	s/">thread & process	s</a></li></ul>
@@ -2339,7 +2370,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="mz6plumqqr5alzly" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="uhn93kitds1q49lg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
@@ -2393,7 +2424,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="9l5eu94w1wgkt8n0" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="8q6o4bc09vmxxrxy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2430,7 +2461,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="9crdv62ebwz1olbd" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="j6ei5hncxob71nrm" class="article-share-link">Share</a>
       
       
     </footer>
