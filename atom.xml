@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-03-20T11:08:43.560Z</updated>
+  <updated>2014-05-19T02:55:53.571Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -13,6 +13,825 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Reverse Words in a String]]></title>
+    <link href="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/"/>
+    <id>http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/</id>
+    <published>2014-05-19T02:47:04.000Z</published>
+    <updated>2014-05-19T02:55:39.000Z</updated>
+    <content type="html"><![CDATA[<p>`
+Reverse Words in a String</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<hr>
+<p>Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot;1 &quot;
+Expected:    &quot;1&quot;</p>
+<p>——————————
+public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            // if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            // }</p>
+<pre><code>    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+—————————————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot;&quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>————————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0) == &quot; &quot;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &quot; &quot;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————————
+Submission Result: Compile Error</p>
+<p>Line 11: error: incomparable types: char and String</p>
+<p>————————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0).isWhiteSpace()){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1).isWhiteSpace()){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>———————
+Submission Result: Compile Error</p>
+<p>Line 11: error: char cannot be dereferenced</p>
+<p>—————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>—————</p>
+<p>Submission Result: Compile Error</p>
+<p>Line 19: error: variable tail might not have been initialized</p>
+<p>——————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>——————</p>
+<p>Submission Result: Wrong Answer</p>
+<p>Input:    &quot;&quot;
+Output:    null
+Expected:    &quot;&quot;
+———————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>——————
+public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        if(helper.size() == 0){
+            return &quot;&quot;;
+        }
+        // if(s == &quot; &quot;){
+        //     return &quot;&quot;;
+        // }
+        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }</p>
+<pre><code>    StringBuffer sb = new StringBuffer();
+    if(tail){
+        sb.append(&quot; &quot;);
+    }
+    for(int i = helper.length - 1; i &gt;= 0; i--){
+        sb.append(helper[i]);
+        if(i &gt; 0){
+            sb.append(&quot; &quot;);    
+        }
+
+    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————
+Submission Result: Compile Error</p>
+<p>Line 4: error: cannot find symbol: method size()
+————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        // if(s == &quot; &quot;){
+        //     return &quot;&quot;;
+        // }
+        // 可能有多个空格
+        String[] helper = s.split(&quot; &quot;);
+        if(helper.length == 0){
+            return &quot;&quot;;
+        }</p>
+<pre><code>    if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+        return s;
+    }
+    // boolean head = false;
+    // boolean tail = false;
+    // if(s.charAt(0) == &#39; &#39;){
+    //     head = true;
+    // }
+    // if(s.charAt(s.length() - 1) == &#39; &#39;){
+    //     tail = true;
+    // }
+
+    StringBuffer sb = new StringBuffer();
+    if(helper.length == 1){
+        sb.append(helper[0]);
+        return sb.toString();
+    }
+    // if(tail){
+    //     sb.append(&quot; &quot;);
+    // }
+    for(int i = helper.length - 1; i &gt;= 0; i--){
+        sb.append(helper[i]);
+        if(i &gt; 0){
+            sb.append(&quot; &quot;);    
+        }
+
+    }
+    // if(head){
+    //     sb.append(&quot; &quot;);
+    // }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot;1 &quot;
+Expected:    &quot;1&quot;
+———————
+第二天
+———————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(s.charAt(i).isWhiteSpace()){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(s.charAt(l).isWhiteSpace()){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Compile Error</p>
+<p>Line 10: error: char cannot be dereferenced
+————————</p>
+<p>The type char is a primitive -- not an object -- so it cannot be dereferenced</p>
+<p>Dereferencing is the process of accessing the value referred to by a reference. Since a char is already a value (not a reference), it can not be dereferenced.</p>
+<p>use Character class:</p>
+<p>if(Character.isLetter(c)) {}</p>
+<p>————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhiteSpace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhiteSpace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+—————————
+Submission Result: Compile Error</p>
+<p>Line 10: error: cannot find symbol: method isWhiteSpace(char)</p>
+<p>————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Compile Error</p>
+<p>Line 25: error: cannot find symbol: method subString(int,int)
+———————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+————————
+Submission Result: Compile Error</p>
+<p>Line 31: error: no suitable method found for split(char)
+————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+————————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
+Last executed input:    &quot; &quot;
+—————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
+Last executed input:    &quot; &quot;
+——————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+——————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+Last executed input:    &quot; &quot;
+——————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    if(tail &gt; i){
+        ss = s.substring(i, tail + 1);
+    }
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>—————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    if(tail &gt;= i){
+        ss = s.substring(i, tail + 1);
+    }else{
+        return &quot;&quot;;
+    }
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}</p>
+<p>—————————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot; 1&quot;
+Expected:    &quot;1&quot;
+———————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.length() == 0 || s == null){
+            return s;
+        }</p>
+<pre><code>    if(s.length() == 1 &amp;&amp; s != &quot; &quot;){
+        return s;
+    }
+
+    s = s.trim();
+
+    String[] helper = s.split(&quot;\\s+&quot;);
+
+    StringBuffer sb = new StringBuffer();
+
+    for(int i = helper.length - 1; i &gt;= 0; i-- ){
+        sb.append(helper[i]);
+        if(i != 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+
+}
+</code></pre><p>}</p>
+<p>———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>————————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        if(s.length() == 0 || s == null){
+            return s;
+        }</p>
+<pre><code>    if(s.length() == 1 &amp;&amp; !s.equals(&quot; &quot;)){
+        return s;
+    }
+</code></pre><p>//忘记用 trim()来去首尾的空格<br>        s = s.trim();</p>
+<pre><code>    //这里注意所有空格的表达形式, 包括whitespace, tab, enter等 详见http://stackoverflow.com/a/225360/2345313
+    String[] helper = s.split(&quot;\\s+&quot;);
+
+    StringBuffer sb = new StringBuffer();
+
+    for(int i = helper.length - 1; i &gt;= 0; i-- ){
+        sb.append(helper[i]);
+        if(i != 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+
+}
+</code></pre><p>}
+——————————
+——————————
+Submission Result: Accepted</p>
+<p>`</p>
+]]></content>
+    
+    
+      <category term="leetcode" scheme="http://johnnyhuo.github.io/tags/leetcode/"/>
+    
+      <category term="string" scheme="http://johnnyhuo.github.io/tags/string/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[2Sum_continue]]></title>
@@ -818,7 +1637,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
     <link href="http://johnnyhuo.github.io/2014/03/13/%E6%8B%96%E6%8B%96%E6%8B%89%E6%8B%89%E8%BF%98%E6%98%AF%E5%BC%80%E5%A7%8B%E5%B9%B2%E6%AD%A3%E4%BA%8B%E5%90%A7/"/>
     <id>http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/</id>
     <published>2014-03-14T06:48:00.000Z</published>
-    <updated>2014-03-16T05:20:14.000Z</updated>
+    <updated>2014-04-03T06:15:55.000Z</updated>
     <content type="html"><![CDATA[<h2 id="-">时间流水账：</h2>
 <p>7点半下班，7点45到家，没有做饭，随便吃吃蝴蝶酥+牛奶，到现在11点50，有4个小时的时间...看大酒神视频一个多小时，研究对比amazon上面thunderbolt转接线又不知过了多久，期间做了一点点正事就是把老婆要求的在职证明又重新扫描了一遍。
 这种时间效率做什么都绝无成功之可能啊！</p>
@@ -936,7 +1755,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
     
       <category term="diary" scheme="http://johnnyhuo.github.io/tags/diary/"/>
     
-      <category term="thread &amp; process" scheme="http://johnnyhuo.github.io/tags/thread%20&%20process/"/>
+      <category term="thread &amp; process	s" scheme="http://johnnyhuo.github.io/tags/thread%20&%20process%09s/"/>
     
   </entry>
   

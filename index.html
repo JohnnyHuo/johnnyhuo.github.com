@@ -59,6 +59,848 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcodeReverseWordsInString" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/18/leetcodeReverseWordsInString/" class="article-date">
+  <time datetime="2014-05-19T02:47:04.000Z" itemprop="datePublished">May 18 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/18/leetcodeReverseWordsInString/">Reverse Words in a String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>`
+Reverse Words in a String</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<hr>
+<p>Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot;1 &quot;
+Expected:    &quot;1&quot;</p>
+<p>——————————
+public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            // if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            // }</p>
+<pre><code>    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+—————————————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot;&quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>————————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0) == &quot; &quot;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &quot; &quot;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————————
+Submission Result: Compile Error</p>
+<p>Line 11: error: incomparable types: char and String</p>
+<p>————————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0).isWhiteSpace()){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1).isWhiteSpace()){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>———————
+Submission Result: Compile Error</p>
+<p>Line 11: error: char cannot be dereferenced</p>
+<p>—————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head;
+        boolean tail;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>—————</p>
+<p>Submission Result: Compile Error</p>
+<p>Line 19: error: variable tail might not have been initialized</p>
+<p>——————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0){
+            return null;
+        }
+        if(s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}</p>
+<p>——————</p>
+<p>Submission Result: Wrong Answer</p>
+<p>Input:    &quot;&quot;
+Output:    null
+Expected:    &quot;&quot;
+———————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }
+        String[] helper = s.split(&quot; &quot;);
+        StringBuffer sb = new StringBuffer();
+        if(tail){
+            sb.append(&quot; &quot;);
+        }
+        for(int i = helper.length - 1; i &gt;= 0; i--){
+            sb.append(helper[i]);
+            if(i &gt; 0){
+                sb.append(&quot; &quot;);<br>            }</p>
+<pre><code>    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>——————
+public class Solution {
+    public String reverseWords(String s) {
+        String[] helper = s.split(&quot; &quot;);
+        if(helper.size() == 0){
+            return &quot;&quot;;
+        }
+        // if(s == &quot; &quot;){
+        //     return &quot;&quot;;
+        // }
+        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+            return s;
+        }
+        boolean head = false;
+        boolean tail = false;
+        if(s.charAt(0) == &#39; &#39;){
+            head = true;
+        }
+        if(s.charAt(s.length() - 1) == &#39; &#39;){
+            tail = true;
+        }</p>
+<pre><code>    StringBuffer sb = new StringBuffer();
+    if(tail){
+        sb.append(&quot; &quot;);
+    }
+    for(int i = helper.length - 1; i &gt;= 0; i--){
+        sb.append(helper[i]);
+        if(i &gt; 0){
+            sb.append(&quot; &quot;);    
+        }
+
+    }
+    if(head){
+        sb.append(&quot; &quot;);
+    }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————
+Submission Result: Compile Error</p>
+<p>Line 4: error: cannot find symbol: method size()
+————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        // if(s == &quot; &quot;){
+        //     return &quot;&quot;;
+        // }
+        // 可能有多个空格
+        String[] helper = s.split(&quot; &quot;);
+        if(helper.length == 0){
+            return &quot;&quot;;
+        }</p>
+<pre><code>    if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
+        return s;
+    }
+    // boolean head = false;
+    // boolean tail = false;
+    // if(s.charAt(0) == &#39; &#39;){
+    //     head = true;
+    // }
+    // if(s.charAt(s.length() - 1) == &#39; &#39;){
+    //     tail = true;
+    // }
+
+    StringBuffer sb = new StringBuffer();
+    if(helper.length == 1){
+        sb.append(helper[0]);
+        return sb.toString();
+    }
+    // if(tail){
+    //     sb.append(&quot; &quot;);
+    // }
+    for(int i = helper.length - 1; i &gt;= 0; i--){
+        sb.append(helper[i]);
+        if(i &gt; 0){
+            sb.append(&quot; &quot;);    
+        }
+
+    }
+    // if(head){
+    //     sb.append(&quot; &quot;);
+    // }
+    String reverse = sb.toString();
+    return reverse;
+}
+</code></pre><p>}
+——————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot;1 &quot;
+Expected:    &quot;1&quot;
+———————
+第二天
+———————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(s.charAt(i).isWhiteSpace()){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(s.charAt(l).isWhiteSpace()){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Compile Error</p>
+<p>Line 10: error: char cannot be dereferenced
+————————</p>
+<p>The type char is a primitive -- not an object -- so it cannot be dereferenced</p>
+<p>Dereferencing is the process of accessing the value referred to by a reference. Since a char is already a value (not a reference), it can not be dereferenced.</p>
+<p>use Character class:</p>
+<p>if(Character.isLetter(c)) {}</p>
+<p>————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhiteSpace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhiteSpace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+—————————
+Submission Result: Compile Error</p>
+<p>Line 10: error: cannot find symbol: method isWhiteSpace(char)</p>
+<p>————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.subString(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Compile Error</p>
+<p>Line 25: error: cannot find symbol: method subString(int,int)
+———————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&#39; &#39;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+————————
+Submission Result: Compile Error</p>
+<p>Line 31: error: no suitable method found for split(char)
+————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+————————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
+Last executed input:    &quot; &quot;
+—————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(i))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
+Last executed input:    &quot; &quot;
+——————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    ss = s.substring(i, tail + 1);
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+——————
+Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+Last executed input:    &quot; &quot;
+——————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    if(tail &gt; i){
+        ss = s.substring(i, tail + 1);
+    }
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}
+———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>—————————
+public class Solution {
+    public String reverseWords(String s) {</p>
+<pre><code>    int l = s.length();
+    if(l == 0){
+        return s;
+    }
+    int i = 0;
+    while(i &lt; l){
+        if(Character.isWhitespace(s.charAt(i))){
+            i++;
+        }else{
+            break;
+        }
+    }
+    int tail = l - 1;
+    while(tail &gt;= 0){
+        if(Character.isWhitespace(s.charAt(tail))){
+            tail--;
+        }else{
+            break;
+        }
+    }
+    String ss = new String();
+    if(tail &gt;= i){
+        ss = s.substring(i, tail + 1);
+    }else{
+        return &quot;&quot;;
+    }
+    int ll = ss.length();
+    if(ll == 0 || ll == 1){
+        return s;
+    }
+
+    String[] helper = ss.split(&quot; &quot;);
+    StringBuffer sb = new StringBuffer();
+    for(int j = helper.length - 1; j &gt;= 0; j-- ){
+        sb.append(helper[j]);
+        if(j &gt; 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre><p>}</p>
+<p>—————————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; 1&quot;
+Output:    &quot; 1&quot;
+Expected:    &quot;1&quot;
+———————————
+public class Solution {
+    public String reverseWords(String s) {
+        if(s.length() == 0 || s == null){
+            return s;
+        }</p>
+<pre><code>    if(s.length() == 1 &amp;&amp; s != &quot; &quot;){
+        return s;
+    }
+
+    s = s.trim();
+
+    String[] helper = s.split(&quot;\\s+&quot;);
+
+    StringBuffer sb = new StringBuffer();
+
+    for(int i = helper.length - 1; i &gt;= 0; i-- ){
+        sb.append(helper[i]);
+        if(i != 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+
+}
+</code></pre><p>}</p>
+<p>———————
+Submission Result: Wrong Answer</p>
+<p>Input:    &quot; &quot;
+Output:    &quot; &quot;
+Expected:    &quot;&quot;</p>
+<p>————————</p>
+<p>public class Solution {
+    public String reverseWords(String s) {
+        if(s.length() == 0 || s == null){
+            return s;
+        }</p>
+<pre><code>    if(s.length() == 1 &amp;&amp; !s.equals(&quot; &quot;)){
+        return s;
+    }
+</code></pre><p>//忘记用 trim()来去首尾的空格<br>        s = s.trim();</p>
+<pre><code>    //这里注意所有空格的表达形式, 包括whitespace, tab, enter等 详见http://stackoverflow.com/a/225360/2345313
+    String[] helper = s.split(&quot;\\s+&quot;);
+
+    StringBuffer sb = new StringBuffer();
+
+    for(int i = helper.length - 1; i &gt;= 0; i-- ){
+        sb.append(helper[i]);
+        if(i != 0){
+            sb.append(&quot; &quot;);
+        }
+    }
+
+    return sb.toString();
+
+}
+</code></pre><p>}
+——————————
+——————————
+Submission Result: Accepted</p>
+<p>`</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/" data-id="wfjpd9j2o6fl8852" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/string/">string</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2sum_continue" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/03/20/2sum_continue/" class="article-date">
@@ -319,7 +1161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="nf1ea1gr54h4vzkx" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="znb20wudvdfqy670" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -700,7 +1542,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="al1xmc5ufb1ty9s3" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="ugi0t5k7f2p6ntiq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -860,7 +1702,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="tu985ir9o411ftcu" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="iols1i797l6ong9l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
@@ -934,7 +1776,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="n6zr21e4wsecybqv" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="9ud79c9mznlf4zlp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -1080,10 +1922,10 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="o715ftwodkuy0zhi" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="18sqm0t4k112zvep" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process	s/">thread & process	s</a></li></ul>
 
     </footer>
   </div>
@@ -1497,7 +2339,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="wsb9n9xl0wbcme30" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="mz6plumqqr5alzly" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
@@ -1551,7 +2393,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="q96kqni3ayw4lx88" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="9l5eu94w1wgkt8n0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1588,7 +2430,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="m6rcmgmmugjijph5" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="9crdv62ebwz1olbd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1609,7 +2451,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TwoSum/">TwoSum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/">udp</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TwoSum/">TwoSum</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Work/">Work</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/diary/">diary</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/">interview</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job hunting/">job hunting</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcp/">tcp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process/">thread & process</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread & process	s/">thread & process	s</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/udp/">udp</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1618,7 +2460,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/TwoSum/" style="font-size: 20.00px;">TwoSum</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 20.00px;">diary</a><a href="/tags/interview/" style="font-size: 20.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 20.00px;">job hunting</a><a href="/tags/leetcode/" style="font-size: 20.00px;">leetcode</a><a href="/tags/tcp/" style="font-size: 10.00px;">tcp</a><a href="/tags/thread & process/" style="font-size: 20.00px;">thread & process</a><a href="/tags/udp/" style="font-size: 10.00px;">udp</a>
+      <a href="/tags/Spring/" style="font-size: 10.00px;">Spring</a><a href="/tags/TwoSum/" style="font-size: 15.00px;">TwoSum</a><a href="/tags/Work/" style="font-size: 10.00px;">Work</a><a href="/tags/diary/" style="font-size: 15.00px;">diary</a><a href="/tags/interview/" style="font-size: 15.00px;">interview</a><a href="/tags/job hunting/" style="font-size: 15.00px;">job hunting</a><a href="/tags/leetcode/" style="font-size: 20.00px;">leetcode</a><a href="/tags/string/" style="font-size: 10.00px;">string</a><a href="/tags/tcp/" style="font-size: 10.00px;">tcp</a><a href="/tags/thread & process/" style="font-size: 10.00px;">thread & process</a><a href="/tags/thread & process	s/" style="font-size: 10.00px;">thread & process	s</a><a href="/tags/udp/" style="font-size: 10.00px;">udp</a>
     </div>
   </div>
 
@@ -1627,7 +2469,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">8</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05">May 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03">March 2014</a><span class="archive-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -1637,6 +2479,10 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/05/18/leetcodeReverseWordsInString/">Reverse Words in a String</a>
+          </li>
         
           <li>
             <a href="/2014/03/20/2sum_continue/">2Sum_continue</a>
@@ -1652,10 +2498,6 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
         
           <li>
             <a href="/2014/03/15/接上：拖拖拉拉/">接上：拖拖拉拉</a>
-          </li>
-        
-          <li>
-            <a href="/2014/03/13/拖拖拉拉还是开始干正事吧/">拖拖拉拉还是开始干正事吧</a>
           </li>
         
       </ul>
