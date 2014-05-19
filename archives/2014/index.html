@@ -81,841 +81,1569 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>`public class Solution {
-    public String reverseWords(String s) {
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    String reverse = sb.toString();
-    return reverse;
-}}`
-</code></pre><hr>
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
+    }
+}
+</pre></td></tr></table></figure>
+
+
+<hr>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
 Output:    &quot;1 &quot;
 Expected:    &quot;1&quot;</p>
 <hr>
-<p>`
-public class Solution {
-    public String reverseWords(String s) {
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            // if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            // }</p>
-<pre><code>    }
-    String reverse = sb.toString();
-    return reverse;
+            <span class="comment">// if(i &gt; 0){</span>
+                sb.append(<span class="string">" "</span>);    
+            <span class="comment">// }         </span>
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
+    }
 }
-</code></pre><p>}</p>
-<h2 id="-">`</h2>
+</pre></td></tr></table></figure>
+
+<hr>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <hr>
-<p>`public class Solution {
-    public String reverseWords(String s) {
-        if(s.equals(&quot;&quot;) || s.length() == 0){
-            return null;
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="keyword">null</span>;
         }
-        if(s.length() == 1){
-            return s;
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head;
-        boolean tail;
-        if(s.charAt(0) == &quot; &quot;){
-            head = true;
+        <span class="keyword">boolean</span> head;
+        <span class="keyword">boolean</span> tail;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">" "</span>){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1) == &quot; &quot;){
-            tail = true;
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>) == <span class="string">" "</span>){
+            tail = <span class="keyword">true</span>;
         }
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        if(tail){
-            sb.append(&quot; &quot;);
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
         }
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    if(head){
-        sb.append(&quot; &quot;);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }
+            
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>`}</p>
-<h2 id="-">`</h2>
+</pre></td></tr></table></figure>
+
+<hr>
 <p>Submission Result: Compile Error</p>
 <p>Line 11: error: incomparable types: char and String</p>
-<p>————————————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.equals(&quot;&quot;) || s.length() == 0){
-            return null;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="keyword">null</span>;
         }
-        if(s.length() == 1){
-            return s;
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head;
-        boolean tail;
-        if(s.charAt(0).isWhiteSpace()){
-            head = true;
+        <span class="keyword">boolean</span> head;
+        <span class="keyword">boolean</span> tail;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>).isWhiteSpace()){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1).isWhiteSpace()){
-            tail = true;
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>).isWhiteSpace()){
+            tail = <span class="keyword">true</span>;
         }
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        if(tail){
-            sb.append(&quot; &quot;);
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
         }
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    if(head){
-        sb.append(&quot; &quot;);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }    
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>}
-`
-———————
-Submission Result: Compile Error</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Compile Error</p>
 <p>Line 11: error: char cannot be dereferenced</p>
-<p>—————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.equals(&quot;&quot;) || s.length() == 0){
-            return null;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="keyword">null</span>;
         }
-        if(s.length() == 1){
-            return s;
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head;
-        boolean tail;
-        if(s.charAt(0) == &#39; &#39;){
-            head = true;
+        <span class="keyword">boolean</span> head;
+        <span class="keyword">boolean</span> tail;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">' '</span>){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1) == &#39; &#39;){
-            tail = true;
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>) == <span class="string">' '</span>){
+            tail = <span class="keyword">true</span>;
         }
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        if(tail){
-            sb.append(&quot; &quot;);
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
         }
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    if(head){
-        sb.append(&quot; &quot;);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }       
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>}
-`
-—————</p>
+</pre></td></tr></table></figure>
+
+<hr>
 <p>Submission Result: Compile Error</p>
 <p>Line 19: error: variable tail might not have been initialized</p>
-<p>——————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.equals(&quot;&quot;) || s.length() == 0){
-            return null;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="keyword">null</span>;
         }
-        if(s.length() == 1){
-            return s;
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head = false;
-        boolean tail = false;
-        if(s.charAt(0) == &#39; &#39;){
-            head = true;
+        <span class="keyword">boolean</span> head = <span class="keyword">false</span>;
+        <span class="keyword">boolean</span> tail = <span class="keyword">false</span>;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">' '</span>){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1) == &#39; &#39;){
-            tail = true;
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>) == <span class="string">' '</span>){
+            tail = <span class="keyword">true</span>;
         }
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        if(tail){
-            sb.append(&quot; &quot;);
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
         }
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    if(head){
-        sb.append(&quot; &quot;);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }    
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>}
-`
-——————</p>
+</pre></td></tr></table></figure>
+
+<hr>
 <p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot;&quot;
-Output:    null
-Expected:    &quot;&quot;
-———————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
-            return s;
+Output:    null</p>
+<h2 id="expected-">Expected:    &quot;&quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span> || s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head = false;
-        boolean tail = false;
-        if(s.charAt(0) == &#39; &#39;){
-            head = true;
+        <span class="keyword">boolean</span> head = <span class="keyword">false</span>;
+        <span class="keyword">boolean</span> tail = <span class="keyword">false</span>;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">' '</span>){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1) == &#39; &#39;){
-            tail = true;
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>) == <span class="string">' '</span>){
+            tail = <span class="keyword">true</span>;
         }
-        String[] helper = s.split(&quot; &quot;);
-        StringBuffer sb = new StringBuffer();
-        if(tail){
-            sb.append(&quot; &quot;);
+        String[] helper = s.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
         }
-        for(int i = helper.length - 1; i &gt;= 0; i--){
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
             sb.append(helper[i]);
-            if(i &gt; 0){
-                sb.append(&quot; &quot;);<br>            }</p>
-<pre><code>    }
-    if(head){
-        sb.append(&quot; &quot;);
-    }
-    String reverse = sb.toString();
-    return reverse;
-}
-</code></pre><p>}
-`
-———————
-Submission Result: Wrong Answer</p>
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }    
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
+    }}
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
-<p>——————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        String[] helper = s.split(&quot; &quot;);
-        if(helper.size() == 0){
-            return &quot;&quot;;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        String[] helper = s.split(<span class="string">" "</span>);
+        <span class="keyword">if</span>(helper.size() == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="string">""</span>;
         }
-        // if(s == &quot; &quot;){
-        //     return &quot;&quot;;
-        // }
-        if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
-            return s;
+        <span class="comment">// if(s == " "){</span>
+        <span class="comment">//     return "";</span>
+        <span class="comment">// }</span>
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span> || s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
         }
-        boolean head = false;
-        boolean tail = false;
-        if(s.charAt(0) == &#39; &#39;){
-            head = true;
+        <span class="keyword">boolean</span> head = <span class="keyword">false</span>;
+        <span class="keyword">boolean</span> tail = <span class="keyword">false</span>;
+        <span class="keyword">if</span>(s.charAt(<span class="number">0</span>) == <span class="string">' '</span>){
+            head = <span class="keyword">true</span>;
         }
-        if(s.charAt(s.length() - 1) == &#39; &#39;){
-            tail = true;
-        }</p>
-<pre><code>    StringBuffer sb = new StringBuffer();
-    if(tail){
-        sb.append(&quot; &quot;);
+        <span class="keyword">if</span>(s.charAt(s.length() - <span class="number">1</span>) == <span class="string">' '</span>){
+            tail = <span class="keyword">true</span>;
+        }
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(tail){
+            sb.append(<span class="string">" "</span>);
+        }
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
+            sb.append(helper[i]);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }   
+        }
+        <span class="keyword">if</span>(head){
+            sb.append(<span class="string">" "</span>);
+        }
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    for(int i = helper.length - 1; i &gt;= 0; i--){
-        sb.append(helper[i]);
-        if(i &gt; 0){
-            sb.append(&quot; &quot;);    
-        }
-
-    }
-    if(head){
-        sb.append(&quot; &quot;);
-    }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>}
-`
-——————
-Submission Result: Compile Error</p>
-<p>Line 4: error: cannot find symbol: method size()
-————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        // if(s == &quot; &quot;){
-        //     return &quot;&quot;;
-        // }
-        // 可能有多个空格
-        String[] helper = s.split(&quot; &quot;);
-        if(helper.length == 0){
-            return &quot;&quot;;
-        }</p>
-<pre><code>    if(s.equals(&quot;&quot;) || s.length() == 0 || s.length() == 1){
-        return s;
-    }
-    // boolean head = false;
-    // boolean tail = false;
-    // if(s.charAt(0) == &#39; &#39;){
-    //     head = true;
-    // }
-    // if(s.charAt(s.length() - 1) == &#39; &#39;){
-    //     tail = true;
-    // }
+</pre></td></tr></table></figure>
 
-    StringBuffer sb = new StringBuffer();
-    if(helper.length == 1){
-        sb.append(helper[0]);
-        return sb.toString();
-    }
-    // if(tail){
-    //     sb.append(&quot; &quot;);
-    // }
-    for(int i = helper.length - 1; i &gt;= 0; i--){
-        sb.append(helper[i]);
-        if(i &gt; 0){
-            sb.append(&quot; &quot;);    
+<hr>
+<p>Submission Result: Compile Error</p>
+<h2 id="line-4-error-cannot-find-symbol-method-size-">Line 4: error: cannot find symbol: method size()</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="comment">// if(s == " "){</span>
+        <span class="comment">//     return "";</span>
+        <span class="comment">// }</span>
+        <span class="comment">// 可能有多个空格</span>
+        String[] helper = s.split(<span class="string">" "</span>);
+        <span class="keyword">if</span>(helper.length == <span class="number">0</span>){
+            <span class="keyword">return</span> <span class="string">""</span>;
         }
-
+        <span class="keyword">if</span>(s.equals(<span class="string">""</span>) || s.length() == <span class="number">0</span> || s.length() == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        <span class="comment">// boolean head = false;</span>
+        <span class="comment">// boolean tail = false;</span>
+        <span class="comment">// if(s.charAt(0) == ' '){</span>
+        <span class="comment">//     head = true;</span>
+        <span class="comment">// }</span>
+        <span class="comment">// if(s.charAt(s.length() - 1) == ' '){</span>
+        <span class="comment">//     tail = true;</span>
+        <span class="comment">// }</span>
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">if</span>(helper.length == <span class="number">1</span>){
+            sb.append(helper[<span class="number">0</span>]);
+            <span class="keyword">return</span> sb.toString();
+        }
+        <span class="comment">// if(tail){</span>
+        <span class="comment">//     sb.append(" ");</span>
+        <span class="comment">// }</span>
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--){
+            sb.append(helper[i]);
+            <span class="keyword">if</span>(i &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);    
+            }   
+        }
+        <span class="comment">// if(head){</span>
+        <span class="comment">//     sb.append(" ");</span>
+        <span class="comment">// }</span>
+        String reverse = sb.toString();
+        <span class="keyword">return</span> reverse;
     }
-    // if(head){
-    //     sb.append(&quot; &quot;);
-    // }
-    String reverse = sb.toString();
-    return reverse;
 }
-</code></pre><p>}
-`
-——————
-Submission Result: Wrong Answer</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
-Output:    &quot;1 &quot;
-Expected:    &quot;1&quot;
-———————
-第二天
-———————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(s.charAt(i).isWhiteSpace()){
-            i++;
-        }else{
-            break;
+Output:    &quot;1 &quot;</p>
+<h2 id="expected-1-">Expected:    &quot;1&quot;</h2>
+<h2 id="-">第二天</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
-    }
-    int tail = l;
-    while(tail &gt;= 0){
-        if(s.charAt(l).isWhiteSpace()){
-            tail--;
-        }else{
-            break;
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(s.charAt(i).isWhiteSpace()){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
-    }
-    String ss = new String();
-    ss = s.subString(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
-
-    String[] helper = ss.split(&#39; &#39;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+        <span class="keyword">int</span> tail = l;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(s.charAt(l).isWhiteSpace()){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.subString(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">' '</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}
-`
-———————
-Submission Result: Compile Error</p>
-<p>Line 10: error: char cannot be dereferenced
-————————</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Compile Error</p>
+<p>Line 10: error: char cannot be dereferenced</p>
 <p>The type char is a primitive -- not an object -- so it cannot be dereferenced</p>
 <p>Dereferencing is the process of accessing the value referred to by a reference. Since a char is already a value (not a reference), it can not be dereferenced.</p>
 <p>use Character class:</p>
 <p>if(Character.isLetter(c)) {}</p>
-<p>————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhiteSpace(s.charAt(i))){
-            i++;
-        }else{
-            break;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
-    }
-    int tail = l;
-    while(tail &gt;= 0){
-        if(Character.isWhiteSpace(s.charAt(i))){
-            tail--;
-        }else{
-            break;
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhiteSpace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
-    }
-    String ss = new String();
-    ss = s.subString(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
-
-    String[] helper = ss.split(&#39; &#39;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+        <span class="keyword">int</span> tail = l;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhiteSpace(s.charAt(i))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.subString(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">' '</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}
-`
-—————————
-Submission Result: Compile Error</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Compile Error</p>
 <p>Line 10: error: cannot find symbol: method isWhiteSpace(char)</p>
-<p>————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
+<hr>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
-    }
-    int tail = l;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(i))){
-            tail--;
-        }else{
-            break;
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
-    }
-    String ss = new String();
-    ss = s.subString(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
-
-    String[] helper = ss.split(&#39; &#39;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+        <span class="keyword">int</span> tail = l;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.subString(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">' '</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}`
-———————
-Submission Result: Compile Error</p>
-<p>Line 25: error: cannot find symbol: method subString(int,int)
-———————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
-        }
-    }
-    int tail = l;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(i))){
-            tail--;
-        }else{
-            break;
-        }
-    }
-    String ss = new String();
-    ss = s.substring(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
+</pre></td></tr></table></figure>
 
-    String[] helper = ss.split(&#39; &#39;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+<hr>
+<p>Submission Result: Compile Error</p>
+<h2 id="line-25-error-cannot-find-symbol-method-substring-int-int-">Line 25: error: cannot find symbol: method subString(int,int)</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">int</span> tail = l;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.substring(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">' '</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}
-`
-————————
-Submission Result: Compile Error</p>
-<p>Line 31: error: no suitable method found for split(char)
-————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
-        }
-    }
-    int tail = l;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(i))){
-            tail--;
-        }else{
-            break;
-        }
-    }
-    String ss = new String();
-    ss = s.substring(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
+</pre></td></tr></table></figure>
 
-    String[] helper = ss.split(&quot; &quot;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+<hr>
+<p>Submission Result: Compile Error</p>
+<h2 id="line-31-error-no-suitable-method-found-for-split-char-">Line 31: error: no suitable method found for split(char)</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">int</span> tail = l;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.substring(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}`
-————————
-Submission Result: Runtime Error</p>
-<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
-Last executed input:    &quot; &quot;
-—————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
-        }
-    }
-    int tail = l - 1;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(i))){
-            tail--;
-        }else{
-            break;
-        }
-    }
-    String ss = new String();
-    ss = s.substring(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
+</pre></td></tr></table></figure>
 
-    String[] helper = ss.split(&quot; &quot;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+<hr>
+<p>Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1</p>
+<h2 id="last-executed-input-">Last executed input:    &quot; &quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">int</span> tail = l - <span class="number">1</span>;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.substring(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}`
-———————
-Submission Result: Runtime Error</p>
-<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1
-Last executed input:    &quot; &quot;
-——————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
-        }
-    }
-    int tail = l - 1;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(tail))){
-            tail--;
-        }else{
-            break;
-        }
-    }
-    String ss = new String();
-    ss = s.substring(i, tail + 1);
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
+</pre></td></tr></table></figure>
 
-    String[] helper = ss.split(&quot; &quot;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+<hr>
+<p>Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 18: java.lang.StringIndexOutOfBoundsException: String index out of range: 1</p>
+<h2 id="last-executed-input-">Last executed input:    &quot; &quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">int</span> tail = l - <span class="number">1</span>;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(tail))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        String ss = <span class="keyword">new</span> String();
+        ss = s.substring(i, tail + <span class="number">1</span>);
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}`
-——————
-Submission Result: Runtime Error</p>
-<p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1
-Last executed input:    &quot; &quot;
-——————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
-        }
-    }
-    int tail = l - 1;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(tail))){
-            tail--;
-        }else{
-            break;
-        }
-    }
-    String ss = new String();
-    if(tail &gt; i){
-        ss = s.substring(i, tail + 1);
-    }
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
+</pre></td></tr></table></figure>
 
-    String[] helper = ss.split(&quot; &quot;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+<hr>
+<p>Submission Result: Runtime Error</p>
+<p>Runtime Error Message:    Line 25: java.lang.StringIndexOutOfBoundsException: String index out of range: -1</p>
+<h2 id="last-executed-input-">Last executed input:    &quot; &quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        <span class="keyword">int</span> tail = l - <span class="number">1</span>;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(tail))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
+        }
+        String ss = <span class="keyword">new</span> String();
+        <span class="keyword">if</span>(tail &gt; i){
+            ss = s.substring(i, tail + <span class="number">1</span>);
+        }
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}`
-———————
-Submission Result: Wrong Answer</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
-Output:    &quot; &quot;
-Expected:    &quot;&quot;</p>
-<p>—————————
-`
-public class Solution {
-    public String reverseWords(String s) {</p>
-<pre><code>    int l = s.length();
-    if(l == 0){
-        return s;
-    }
-    int i = 0;
-    while(i &lt; l){
-        if(Character.isWhitespace(s.charAt(i))){
-            i++;
-        }else{
-            break;
+Output:    &quot; &quot;</p>
+<h2 id="expected-">Expected:    &quot;&quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        
+        <span class="keyword">int</span> l = s.length();
+        <span class="keyword">if</span>(l == <span class="number">0</span>){
+            <span class="keyword">return</span> s;
         }
-    }
-    int tail = l - 1;
-    while(tail &gt;= 0){
-        if(Character.isWhitespace(s.charAt(tail))){
-            tail--;
-        }else{
-            break;
+        <span class="keyword">int</span> i = <span class="number">0</span>;
+        <span class="keyword">while</span>(i &lt; l){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(i))){
+                i++;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
-    }
-    String ss = new String();
-    if(tail &gt;= i){
-        ss = s.substring(i, tail + 1);
-    }else{
-        return &quot;&quot;;
-    }
-    int ll = ss.length();
-    if(ll == 0 || ll == 1){
-        return s;
-    }
-
-    String[] helper = ss.split(&quot; &quot;);
-    StringBuffer sb = new StringBuffer();
-    for(int j = helper.length - 1; j &gt;= 0; j-- ){
-        sb.append(helper[j]);
-        if(j &gt; 0){
-            sb.append(&quot; &quot;);
+        <span class="keyword">int</span> tail = l - <span class="number">1</span>;
+        <span class="keyword">while</span>(tail &gt;= <span class="number">0</span>){
+            <span class="keyword">if</span>(Character.isWhitespace(s.charAt(tail))){
+                tail--;
+            }<span class="keyword">else</span>{
+                <span class="keyword">break</span>;
+            }
         }
+        String ss = <span class="keyword">new</span> String();
+        <span class="keyword">if</span>(tail &gt;= i){
+            ss = s.substring(i, tail + <span class="number">1</span>);
+        }<span class="keyword">else</span>{
+            <span class="keyword">return</span> <span class="string">""</span>;
+        }
+        <span class="keyword">int</span> ll = ss.length();
+        <span class="keyword">if</span>(ll == <span class="number">0</span> || ll == <span class="number">1</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        String[] helper = ss.split(<span class="string">" "</span>);
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        <span class="keyword">for</span>(<span class="keyword">int</span> j = helper.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j-- ){
+            sb.append(helper[j]);
+            <span class="keyword">if</span>(j &gt; <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
     }
-
-    return sb.toString();
 }
-</code></pre><p>}
-`
-—————————
-Submission Result: Wrong Answer</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; 1&quot;
-Output:    &quot; 1&quot;
-Expected:    &quot;1&quot;
-———————————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.length() == 0 || s == null){
-            return s;
-        }</p>
-<pre><code>    if(s.length() == 1 &amp;&amp; s != &quot; &quot;){
-        return s;
-    }
-
-    s = s.trim();
-
-    String[] helper = s.split(&quot;\\s+&quot;);
-
-    StringBuffer sb = new StringBuffer();
-
-    for(int i = helper.length - 1; i &gt;= 0; i-- ){
-        sb.append(helper[i]);
-        if(i != 0){
-            sb.append(&quot; &quot;);
+Output:    &quot; 1&quot;</p>
+<h2 id="expected-1-">Expected:    &quot;1&quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.length() == <span class="number">0</span> || s == <span class="keyword">null</span>){
+            <span class="keyword">return</span> s;
         }
+        
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span> && s != <span class="string">" "</span>){
+            <span class="keyword">return</span> s;
+        }
+        
+        s = s.trim();
+        
+        String[] helper = s.split(<span class="string">"\\s+"</span>);
+        
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- ){
+            sb.append(helper[i]);
+            <span class="keyword">if</span>(i != <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
+        
     }
-
-    return sb.toString();
-
 }
-</code></pre><p>}
-`
-———————
-Submission Result: Wrong Answer</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Wrong Answer</p>
 <p>Input:    &quot; &quot;
-Output:    &quot; &quot;
-Expected:    &quot;&quot;</p>
-<p>————————
-`
-public class Solution {
-    public String reverseWords(String s) {
-        if(s.length() == 0 || s == null){
-            return s;
-        }</p>
-<pre><code>    if(s.length() == 1 &amp;&amp; !s.equals(&quot; &quot;)){
-        return s;
-    }
-</code></pre><p>//忘记用 trim()来去首尾的空格<br>        s = s.trim();</p>
-<pre><code>    //这里注意所有空格的表达形式, 包括whitespace, tab, enter等 详见http://stackoverflow.com/a/225360/2345313
-    String[] helper = s.split(&quot;\\s+&quot;);
-
-    StringBuffer sb = new StringBuffer();
-
-    for(int i = helper.length - 1; i &gt;= 0; i-- ){
-        sb.append(helper[i]);
-        if(i != 0){
-            sb.append(&quot; &quot;);
+Output:    &quot; &quot;</p>
+<h2 id="expected-">Expected:    &quot;&quot;</h2>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> {</span>
+    <span class="keyword">public</span> String <span class="title">reverseWords</span>(String s) {
+        <span class="keyword">if</span>(s.length() == <span class="number">0</span> || s == <span class="keyword">null</span>){
+            <span class="keyword">return</span> s;
         }
+        
+        <span class="keyword">if</span>(s.length() == <span class="number">1</span> && !s.equals(<span class="string">" "</span>)){
+            <span class="keyword">return</span> s;
+        }
+<span class="comment">//忘记用 trim()来去首尾的空格        </span>
+        s = s.trim();
+
+        <span class="comment">//这里注意所有空格的表达形式, 包括whitespace, tab, enter等 详见http://stackoverflow.com/a/225360/2345313</span>
+        String[] helper = s.split(<span class="string">"\\s+"</span>);
+        
+        StringBuffer sb = <span class="keyword">new</span> StringBuffer();
+        
+        <span class="keyword">for</span>(<span class="keyword">int</span> i = helper.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- ){
+            sb.append(helper[i]);
+            <span class="keyword">if</span>(i != <span class="number">0</span>){
+                sb.append(<span class="string">" "</span>);
+            }
+        }
+        
+        <span class="keyword">return</span> sb.toString();
+        
     }
-
-    return sb.toString();
-
 }
-</code></pre><p>}
-`
-——————————
-——————————
-Submission Result: Accepted</p>
+</pre></td></tr></table></figure>
+
+<hr>
+<p>Submission Result: Accepted</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/" data-id="tlcx9xc6x9zgh7v4" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/" data-id="n3pg2xh7cjv5oki2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/string/">string</a></li></ul>
@@ -1187,7 +1915,7 @@ Submission Result: Accepted</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="o6b5sc42dprubqio" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/20/2sum_continue/" data-id="nzd9xnzgillnzoxe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -1568,7 +2296,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="rlb9vvws0mmg7v9z" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/16/leetcodetwosum/" data-id="vxn2mnlcp4bq0hxt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TwoSum/">TwoSum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -1728,7 +2456,7 @@ All the members inherited from class Object; <strong>the only method of Object t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="sk14638f3mdgnqnb" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/tcp和udp的不同/" data-id="lih4fc3r2ycsfmix" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcp/">tcp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/udp/">udp</a></li></ul>
@@ -1802,7 +2530,7 @@ must be taken so that different threads don&#39;t step on each other.<br>This is
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="8dceqb6vxutfa3jr" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/15/接上：拖拖拉拉/" data-id="3yr37m7vwc0t00lb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process/">thread & process</a></li></ul>
@@ -1948,7 +2676,7 @@ shared-memory multiprogramming model. Calling them &quot;threads&quot; would imp
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="wq2ytw7ph2j2g1wn" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/拖拖拉拉还是开始干正事吧/" data-id="iq5i4vogcyo1hbh1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interview/">interview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job hunting/">job hunting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread & process	s/">thread & process	s</a></li></ul>
@@ -2365,7 +3093,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="5r8lcccaw0iaccov" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/@Value,spring,static-argument/" data-id="2wyd838wmoisg74n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Work/">Work</a></li></ul>
@@ -2419,7 +3147,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="hhfgamvkvfpg3xp5" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/test/" data-id="35vselfkq0rcfmn2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2456,7 +3184,7 @@ classpath</em>：不仅包含class路径，还包括jar文件中(class路径)进
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="xhtopew7993bomu5" class="article-share-link">Share</a>
+      <a data-url="http://johnnyhuo.github.io/2014/03/13/hello-world/" data-id="sy30tpquz6bvw1lz" class="article-share-link">Share</a>
       
       
     </footer>
