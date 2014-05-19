@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://johnnyhuo.github.io/"/>
-  <updated>2014-05-19T03:02:59.210Z</updated>
+  <updated>2014-05-19T03:05:32.569Z</updated>
   <id>http://johnnyhuo.github.io/</id>
   
   <author>
@@ -19,9 +19,8 @@
     <link href="http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/"/>
     <id>http://johnnyhuo.github.io/2014/05/18/leetcodeReverseWordsInString/</id>
     <published>2014-05-19T02:47:04.000Z</published>
-    <updated>2014-05-19T03:02:51.000Z</updated>
-    <content type="html"><![CDATA[<p>Reverse Words in a String
-`
+    <updated>2014-05-19T03:05:22.000Z</updated>
+    <content type="html"><![CDATA[<p>`
 public class Solution {
     public String reverseWords(String s) {
         String[] helper = s.split(&quot; &quot;);
@@ -826,8 +825,8 @@ Submission Result: Wrong Answer</p>
 Output:    &quot; &quot;
 Expected:    &quot;&quot;</p>
 <p>————————
-`</p>
-<p>public class Solution {
+`
+public class Solution {
     public String reverseWords(String s) {
         if(s.length() == 0 || s == null){
             return s;
@@ -851,7 +850,8 @@ Expected:    &quot;&quot;</p>
     return sb.toString();
 
 }
-</code></pre><p>}`
+</code></pre><p>}
+`
 ——————————
 ——————————
 Submission Result: Accepted</p>
